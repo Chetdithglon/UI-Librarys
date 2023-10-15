@@ -5612,38 +5612,52 @@ if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
   game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
   end
 EquipWeapon(_G.Select_Weapon)
-if game.Players.LocalPlayer.Character.Humanoid.Health >= 5000 then
-local players = game:GetService("Players"):GetPlayers()
+local player = game.Players.LocalPlayer
+local character = player.Character
+local maxDistance = 400 -- Khoảng cách tối đa để xem xét
 
--- Người chơi mà bạn muốn di chuyển đến
-local targetPlayer = nil
-local minDistance = 400
+    -- Đợi 1 giây trước mỗi lần cập nhật
+if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+  local args = {
+   [1] = "Buso"
+  }
+  game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+  end
+    local playerHead = character:FindFirstChild("Head")
+    local nearestPlayer = nil
+    local nearestDistance = maxDistance
 
--- Lấy người chơi gần nhất
-local closestDistance = math.huge
-for _, player in pairs(players) do
-    if player ~= game.Players.LocalPlayer then -- Loại bỏ người chơi hiện tại (bạn)
-        local distance = (player.Character.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-        if distance < closestDistance then
-            closestDistance = distance
-            targetPlayer = player
+    for _, otherPlayer in pairs(game.Players:GetPlayers()) do
+        if otherPlayer ~= player then
+            local otherCharacter = otherPlayer.Character
+
+            if otherCharacter then
+                local targetHead = otherCharacter:FindFirstChild("Head")
+
+                if targetHead then
+                    local distance = (playerHead.Position - targetHead.Position).Magnitude
+
+                    if distance < nearestDistance then
+                        nearestDistance = distance
+                        nearestPlayer = otherPlayer
+                    end
+                end
+            end
         end
-end
+    end
+
+    if nearestPlayer then
+        local targetHead = nearestPlayer.Character:FindFirstChild("Head")
+        if targetHead then
+            local direction = (targetHead.Position - playerHead.Position).unit
+            local newPosition = targetHead.Position - direction * 10,10,10,10 -- Điều chỉnh khoảng cách di chuyển
+            character:MoveTo(newPosition)
+        end
+    end
 end
 
-
--- Kiểm tra nếu có người chơi gần nhất và khoảng cách nhỏ hơn 200
-if targetPlayer and closestDistance < minDistance then
-    -- Di chuyển người chơi hiện tại đến người chơi gần nhất
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0) -- Điều chỉnh vector (0, 5, 0) để tránh va chạm
-else
-    print("Không có người chơi gần nhất trong khoảng cách 200 part.")
-end
-end
-end
 end
 end)
-
 
 
 
@@ -10703,7 +10717,12 @@ end)
  
 Race:Seperator("Buy + Bật Tộc") 
  
- 
+   Race:Toggle("Kill Người Chơi ( 90% Win )",_G.killplayertrain,function(value)
+ _G.killplayertrain = value
+ _G.click = value
+ _G.FastAttack = value
+ StopTween(_G.killplayertrain)
+ end)
   
    Race:Toggle("Tự Động Bật V4",_G.Auto_Farm_Bone3,function(value)
  _G.Auto_Farm_Bone3 = value
@@ -10900,6 +10919,7 @@ end)
   P:Toggle("Kill Người Chơi Gần Nhất  ( 80% Reset Acc )",_G.killplayertrain,function(value)
  _G.killplayertrain = value
  _G.click = value
+ _G.FastAttack = value
  StopTween(_G.killplayertrain)
  end)
  
@@ -14213,7 +14233,6 @@ end)
 
 wait(3)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/UI-Librarys/main/gerad%20lib'))()
-
 
 
 
