@@ -299,7 +299,7 @@ end)
 
 
 if game.PlaceId == 4442272183 then 
- if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
+if game:GetService("Lighting").FantasySky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/UI-Librarys/main/hyperion'))()
                     local HttpService = game:GetService("HttpService")
 local Data =
@@ -337,7 +337,8 @@ local Final1 = { Url =_G.Boss, Body = Encoded, Method = "POST", Headers = Header
 
 Request(Final1)
 end
-end     
+end
+  
 
 
 
