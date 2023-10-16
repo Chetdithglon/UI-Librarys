@@ -299,7 +299,7 @@ end)
 
 
 if game.PlaceId == 4442272183 then 
-if game:GetService("Workspace").Enemies["Cursed Captain [Lv. 1325] [Raid Boss]"]["Skull Gas Mask"].Handle then
+if game.ReplicatedStorage["Cursed Captain [Lv. 1325] [Raid Boss]"] then 
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/UI-Librarys/main/hyperion'))()
                     local HttpService = game:GetService("HttpService")
 local Data =
