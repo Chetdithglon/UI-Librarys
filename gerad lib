@@ -299,8 +299,8 @@ end)
 
 
 if game.PlaceId == 4442272183 then 
+ if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/UI-Librarys/main/hyperion'))()
-if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
                     local HttpService = game:GetService("HttpService")
 local Data =
 {
