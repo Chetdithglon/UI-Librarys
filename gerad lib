@@ -299,7 +299,7 @@ end)
 
 
 if game.PlaceId == 4442272183 then 
-if game:GetService("Lighting").FantasySky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
+if game:GetService("Workspace").Enemies["Cursed Captain [Lv. 1325] [Raid Boss]"]["Skull Gas Mask"].Handle then
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/UI-Librarys/main/hyperion'))()
                     local HttpService = game:GetService("HttpService")
 local Data =
