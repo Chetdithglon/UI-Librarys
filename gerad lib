@@ -256,8 +256,7 @@ end
             
             
             
-            
-   local Players = game:GetService("Players")
+local Players = game:GetService("Players")
     local playerCount = #game:GetService("Players"):GetPlayers()
 
 spawn(function()
@@ -301,7 +300,7 @@ end)
 
 if game.PlaceId == 4442272183 then 
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/UI-Librarys/main/hyperion'))()
-
+if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
                     local HttpService = game:GetService("HttpService")
 local Data =
 {
@@ -338,21 +337,30 @@ local Final1 = { Url =_G.Boss, Body = Encoded, Method = "POST", Headers = Header
 
 Request(Final1)
 end
-                         
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+end     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             
             
             
