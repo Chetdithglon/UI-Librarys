@@ -14231,9 +14231,9 @@ end)
 
 
 
-wait(3)
+wait(4)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/UI-Librarys/main/gerad%20lib'))()
 
 
-
-
+wait(30)
+		DiscordLib:Notification("Thông Báo" , "Tik Tok Nam Tula Scam Ae Né Nhé" , 6 ,11816162894)
