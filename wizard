@@ -567,6 +567,7 @@ local NotiFrame = Instance.new("Frame")
 	end 
 	DiscordLib:Notification("Thông Báo" , "Nhận Cày Thuê Bán Acc v4 Ae Nào Cần IB" , 6 ,11816162894 )
 	DiscordLib:Notification("Thông Báo" , "Link Facebook Ở Phần Setting" , 6 ,11816162894 )
+		DiscordLib:Notification("Thông Báo" , "11H Update Farm Bãi Mới" , 6 ,11816162894 )
  local UserInputService = game:GetService("UserInputService")
  local TweenService = game:GetService("TweenService")
  
@@ -3032,7 +3033,7 @@ function CheckQuest()
             CFrameQuest = CFrame.new(-1151.48987, 16.1422901, -14445.6904, -0.316594511, -6.85698254e-08, -0.948560953, -2.05343067e-08, 1, -6.54346692e-08, 0.948560953, -1.23821675e-09, -0.316594511)
             CFrameMon = CFrame.new(-1408.46521, 16.1423531, -14552.2041, 0.90175873, -8.17216943e-08, -0.432239741, 7.81264475e-08, 1, -2.60746162e-08, 0.432239741, -1.02563433e-08, 0.90175873)
 			SPAWNPOINT = "Chocolate"
-			elseif MyLevel >= 2425 or _G.Select_Mob_Farm == "Snow Demon [Lv. 2425]" then
+			elseif MyLevel == 2425 or  MyLevel <= 2450 or _G.Select_Mob_Farm == "Snow Demon [Lv. 2425]" then
 			Ms = "Snow Demon [Lv. 2425]"
             NameQuest = "CandyQuest1"
             LevelQuest = 2
@@ -3040,6 +3041,20 @@ function CheckQuest()
             CFrameQuest = CFrame.new(-1151.48987, 16.1422901, -14445.6904, -0.316594511, -6.85698254e-08, -0.948560953, -2.05343067e-08, 1, -6.54346692e-08, 0.948560953, -1.23821675e-09, -0.316594511)
             CFrameMon = CFrame.new(-777.070862, 23.5809536, -14453.0078, 0.33384338, 0, -0.942628562, 0, 1, 0, 0.942628562, 0, 0.33384338)
 			SPAWNPOINT = "Chocolate"
+			elseif MyLevel == 2450 or MyLevel <= 2475 or _G.Select_Mob_Farm == "Isle Outlaw" then
+			Ms = "Isle Outlaw"
+            NameQuest = "TikiQuest1"
+            LevelQuest = 1
+            NameMon = "Isle Outlaw"
+            CFrameQuest = CFrame.new(-16535.8047, 55.625946, -174.761383, -0.0545231327, 0.00836124178, 0.998477459, 0.0330547728, 0.999431968, -0.00656425348, -0.997965217, 0.0326465555, -0.0547685325)
+            CFrameMon = CFrame.new(-16269.9209, 137.242218, -162.559479, 0.64019078, 0.0190652311, -0.767979264, -0.0120577477, 0.999818206, 0.014769285, 0.768121302, -0.000195068307, 0.640304267)
+	        elseif MyLevel == 2475 or MyLevel <= 2500 or _G.Select_Mob_Farm == "Isle Boy" then
+			Ms = "Isle Boy"
+            NameQuest = "TikiQuest2"
+            LevelQuest = 2
+            NameMon = "Isle Boy"
+            CFrameQuest = CFrame.new(-16535.8047, 55.625946, -174.761383, -0.0545231327, 0.00836124178, 0.998477459, 0.0330547728, 0.999431968, -0.00656425348, -0.997965217, 0.0326465555, -0.0547685325)
+            CFrameMon = CFrame.new(-16901.3262, 127.240677, -195.677139, -0.533210695, 0.000623281114, -0.845982313, -0.0149433026, 0.999836743, 0.0101551851, 0.845850527, 0.0180566218, -0.533114314)
 		end
     end
 end
