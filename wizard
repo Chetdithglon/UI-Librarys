@@ -3048,27 +3048,20 @@ function CheckQuest()
             NameMon = "Isle Outlaw"
             CFrameQuest = CFrame.new(-16535.8047, 55.625946, -174.761383, -0.0545231327, 0.00836124178, 0.998477459, 0.0330547728, 0.999431968, -0.00656425348, -0.997965217, 0.0326465555, -0.0547685325)
             CFrameMon = CFrame.new(-16269.9209, 137.242218, -162.559479, 0.64019078, 0.0190652311, -0.767979264, -0.0120577477, 0.999818206, 0.014769285, 0.768121302, -0.000195068307, 0.640304267)
-            elseif MyLevel == 2475 or MyLevel <= 2500 or _G.Select_Mob_Farm == "Island Boy" then
+            elseif MyLevel == 2475 or MyLevel <= 2525 or _G.Select_Mob_Farm == "Island Boy" then
 			Ms = "Island Boy"
             NameQuest = "TikiQuest1"
             LevelQuest = 2
             NameMon = "Island Boy"
             CFrameQuest = CFrame.new(-16535.8047, 55.625946, -174.761383, -0.0545231327, 0.00836124178, 0.998477459, 0.0330547728, 0.999431968, -0.00656425348, -0.997965217, 0.0326465555, -0.0547685325)
             CFrameMon = CFrame.new(-16269.9209, 137.242218, -162.559479, 0.64019078, 0.0190652311, -0.767979264, -0.0120577477, 0.999818206, 0.014769285, 0.768121302, -0.000195068307, 0.640304267)
-            elseif MyLevel == 2500 or MyLevel <= 2525 or _G.Select_Mob_Farm == "Sun-kissed Warrior" then
-			Ms = "Sun-kissed Warrior"
-            NameQuest = "TikiQuest2"
-            LevelQuest = 1
-            NameMon = "Sun-kissed Warrior"
-            CFrameQuest = CFrame.new(-16524.5195, 55.7270699, 1049.77881, -0.219462916, -0.0136177428, 0.975525796, -0.0125806527, 0.999858975, 0.0111271692, -0.975539744, -0.00983075891, -0.21960327)
-            CFrameMon = CFrame.new(-16191.9531, 137.224609, 1022.01117, -0.155469269, -0.0172293633, -0.987690449, 0.00784299895, 0.999794841, -0.0186750535, 0.987809658, -0.0106498497, -0.155302256)
-            elseif MyLevel == 2525 or  _G.Select_Mob_Farm == "Isle Champion" then
+            elseif MyLevel >= 2525 or MyLevel <= 2550 or _G.Select_Mob_Farm == "Isle Champion" then
 			Ms = "Isle Champion"
             NameQuest = "TikiQuest2"
             LevelQuest = 2
             NameMon = "Isle Champion"
-            CFrameQuest = CFrame.new(-16524.5195, 55.7270699, 1049.77881, -0.219462916, -0.0136177428, 0.975525796, -0.0125806527, 0.999858975, 0.0111271692, -0.975539744, -0.00983075891, -0.21960327)
-            CFrameMon = CFrame.new(-16511.3984, 52.5156517, 1025.82861, 0.154991031, 0.987815022, -0.0141167808, 0.0118905008, -0.0161536932, -0.999798894, -0.987844348, 0.154791996, -0.0142492941)
+            CFrameQuest = CFrame.new(-16523.0996, 55.9234467, 1049.65784, -0.418787986, -0.0126074236, 0.907996595, -0.0160101596, 0.99985069, 0.00649857335, -0.907942891, -0.0118156485, -0.418927342)
+            CFrameMon = CFrame.new(-16727.9609, 94.0675659, 1128.85889, -0.363711447, 5.81337787e-08, 0.931511641, -3.84505796e-08, 1, -7.74211415e-08, -0.931511641, -6.39761168e-08, -0.363711447)
 		end
     end
 end
@@ -3077,7 +3070,7 @@ end
 function CheckBossQuest()
     if _G.Select_Boss == "Saber Expert" then
         MsBoss = "Saber Expert"
-        NameBoss = "Saber Expert"
+        NameBoss = "Saber Expert" 
         CFrameBoss = CFrame.new(-1458.89502, 29.8870335, -50.633564, 0.858821094, 1.13848939e-08, 0.512275636, -4.85649254e-09, 1, -1.40823326e-08, -0.512275636, 9.6063415e-09, 0.858821094)
     elseif _G.Select_Boss == "The Saw" then
         MsBoss = "The Saw"
