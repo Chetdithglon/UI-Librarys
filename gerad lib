@@ -288,9 +288,9 @@ spawn(function()
             elseif currentTime >= "04:00:00" and currentTime <= "04:59:00" then
                  CheckTime999= "4H Tối ( Có Boss )✅"
             elseif currentTime >= "05:00:00" and currentTime <= "05:59:00" then
-                 CheckTime999= "Hết Boss 🚩"
+                 CheckTime999= "🚩"
             else
-                 CheckTime999= "Hết Boss 🚩"
+                 CheckTime999= "🚩"
             end
         end)
     end
@@ -299,7 +299,7 @@ end)
 
 
 if game.PlaceId == 4442272183 then 
-if game.ReplicatedStorage["Cursed Captain [Lv. 1325] [Raid Boss]"] then 
+if game.ReplicatedStorage"Terrorshark" then 
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/UI-Librarys/main/hyperion'))()
                     local HttpService = game:GetService("HttpService")
 local Data =
