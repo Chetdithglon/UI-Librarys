@@ -5121,7 +5121,7 @@ spawn(function()
   v.HumanoidRootPart.CanCollide = false
   v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
   PosMonBone = v.HumanoidRootPart.CFrame
-  topos(v.HumanoidRootPart.CFrame * MethodFarm)
+  topos(v.HumanoidRootPart.CFrame * 0,20,0)
   game:GetService'VirtualUser':CaptureController()
   game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
   until _G.canho == false or not v.Parent or v.Humanoid.Health <= 0
