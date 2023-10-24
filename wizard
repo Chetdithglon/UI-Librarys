@@ -5059,87 +5059,7 @@ spawn(function()
     end)
 end)
 
- ca:Button("Chỗ Mua Thuyền ( Update )",function()
- topos(CFrame.new(-16899.6133, 9.31711292, 492.155396, 0.00204202533, -0.00301179662, 0.999993384, -0.0185630079, 0.999823034, 0.00304919085, -0.999825597, -0.01856911, 0.00198575854))
-end)
 
-
-ca:Button("Mua Thuyền",function()
-    local args = {
-    [1] = "BuyBoat",
-    [2] = "Lantern"
-}
-
-game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-     if not  game.Workspace.Boats.Lantern:Destroy() then
-    wait(0.5)
-    local args = {
-    [1] = "BuyBoat",
-    [2] = "Lantern"
-}
-
-game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-end
-end)
-
-ca:Button("Tăng Tốc Độ + An Toàn",function()
-     game.Workspace.Boats.Lantern.VehicleSeat.MaxSpeed = 375
-     game.Workspace.Boats.Lantern.VehicleSeat.Size = Vector3.new(game.Workspace.Boats.Lantern.VehicleSeat.Size.X + 2.9571428298950195,game.Workspace.Boats.Lantern.VehicleSeat.Size.Y + 325,game.Workspace.Boats.Lantern.VehicleSeat.Size.Z + 2.9571428298950195)
-end)
-ca:Button("Tăng Tốc Độ ( Vip )",function()
-     game.Workspace.Boats.Lantern.VehicleSeat.MaxSpeed = 450
-end)
-
-ca:Button("Xóa Xương Mù",function()
-    game:GetService("Lighting").BaseAtmosphere:Destroy()
-    game:GetService("Lighting").SeaTerrorCC:Destroy()
-end)
-
-ca:Button("Bay",function()
-loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/lklklkl/main/bAY%202'))()
- end)
-
-ca:Toggle("Kill Cá ̉( Dễ Die )",_G.canho,function(value)
- _G.canho = value
- _G.FastAttack = value
- _G.FastAttack1 = value
- _G.click = value
- StopTween(_G.canho)
- end)
-spawn(function()
- while wait() do
- if _G.canho and World3 then
- pcall(function()
-  if game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") or game:GetService("Workspace").Enemies:FindFirstChild("Shark")  then
-  for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-  if  v.Name == "Terrorshark" or v.Name == "Shark" then
-  if v.Humanoid.Health > 0 then
-  repeat wait()
-  AutoHaki()
-  EquipWeapon(_G.Select_Weapon)
-  StartMagnetBoneMon = true
-  v.HumanoidRootPart.CanCollide = false
-  v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-  PosMonBone = v.HumanoidRootPart.CFrame
-  topos(v.HumanoidRootPart.CFrame * 0,15,0)
-  game:GetService'VirtualUser':CaptureController()
-  game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-  until _G.canho == false or not v.Parent or v.Humanoid.Health <= 0
-  end
-  end
-  end
-  else
-   StartMagnetBoneMon = false
-  for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
-  if v.Name == "Terrorshark" then
-  elseif v.Name == "Shark" then
-  end
-  end
-  end
-  end)
- end
- end
-end)
 
 
 
@@ -6659,10 +6579,10 @@ end
 		while wait() do
 			if _G.Auto_Cake_Prince then
 				pcall(function()
-					if game.ReplicatedStorage:FindFirstChild("Cake Prince [Raid Boss]") or game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince [Raid Boss]") then   
-						if game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince [Raid Boss]") then
+					if game.ReplicatedStorage:FindFirstChild("Cake Prince") or game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince") then   
+						if game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince") then
 							for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
-								if v.Name == "Cake Prince [Raid Boss]" then
+								if v.Name == "Cake Prince" then
 									repeat wait()
 										AutoHaki()
 										EquipWeapon(_G.Select_Weapon)
@@ -6690,7 +6610,7 @@ end
 										topos(v.HumanoidRootPart.CFrame * MethodFarm)
 										game:GetService'VirtualUser':CaptureController()
 										game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-									until _G.Auto_Cake_Prince == false or game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince [Raid Boss]") or not v.Parent or v.Humanoid.Health <= 0
+									until _G.Auto_Cake_Prince == false or game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince") or not v.Parent or v.Humanoid.Health <= 0
 								end
 							end
 						else
@@ -9017,7 +8937,7 @@ end)
 											topos(v.HumanoidRootPart.CFrame * MethodFarm)
 											game:GetService'VirtualUser':CaptureController()
 											game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-										until _G.Auto_Open_Dough_Dungeon == false or game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince [Raid Boss]") or not v.Parent or v.Humanoid.Health <= 0
+										until _G.Auto_Open_Dough_Dungeon == false or game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince") or not v.Parent or v.Humanoid.Health <= 0
 									end
 								end
 							else
@@ -9025,10 +8945,10 @@ end)
 								topos(CFrame.new(-1820.0634765625, 210.74781799316406, -12297.49609375))
 							end
 						end						
-					elseif game.ReplicatedStorage:FindFirstChild("Dough King [Raid Boss]") or game:GetService("Workspace").Enemies:FindFirstChild("Dough King [Raid Boss]") then
-						if game:GetService("Workspace").Enemies:FindFirstChild("Dough King [Raid Boss]") then
+					elseif game.ReplicatedStorage:FindFirstChild("Dough King") or game:GetService("Workspace").Enemies:FindFirstChild("Dough King") then
+						if game:GetService("Workspace").Enemies:FindFirstChild("Dough King") then
 							for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
-								if v.Name == "Dough King [Raid Boss]" then
+								if v.Name == "Dough King" then
 									repeat wait()
 										AutoHaki()
 										EquipWeapon(_G.Select_Weapon)
@@ -14147,7 +14067,6 @@ end)
 
 wait(4)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/UI-Librarys/main/gerad%20lib'))()
-
 
 
 
