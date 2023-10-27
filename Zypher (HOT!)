@@ -5111,7 +5111,18 @@ spawn(function()
  while wait() do
  if _G.canho and World3 then
  pcall(function()
- if game.Workspace.Boats.FindFirstChild("PirateGrandBrigade") then 
+spawn(function()
+ while wait() do
+ if _G.canho and World3 then
+ pcall(function()
+  if not game.Workspace.Boats:FindFirstChild("PirateGrandBrigade") then
+    topos(CFrame.new(-16899.6133, 9.31711292, 492.155396, 0.00204202533, -0.00301179662, 0.999993384, -0.0185630079, 0.999823034, 0.00304919085, -0.999825597, -0.01856911, 0.00198575854))
+     local args = {
+    [1] = "BuyBoat",
+    [2] = "Lantern"
+}
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))      
+ elseif game.Workspace.Boats.FindFirstChild("PirateGrandBrigade") then 
     game.Workspace.Boats.PirateGrandBrigade.VehicleSeat.Position = Vector3.new(game.Workspace.Boats.PirateGrandBrigade.VehicleSeat.Position.X + -30000 ,game.Workspace.Boats.PirateGrandBrigade.VehicleSeat.Position.Y + 0,game.Workspace.Boats.PirateGrandBrigade.VehicleSeat.Position.Z + 0)
     wait()
     for _,v in next, workspace.Boats.PirateGrandBrigade:GetDescendants() do
@@ -5119,13 +5130,6 @@ spawn(function()
                            topos(v.CFrame)
 end
 end
-elseif not game.Workspace.Boats:FindFirstChild("PirateGrandBrigade") then
-    topos(CFrame.new(-16899.6133, 9.31711292, 492.155396, 0.00204202533, -0.00301179662, 0.999993384, -0.0185630079, 0.999823034, 0.00304919085, -0.999825597, -0.01856911, 0.00198575854))
-     local args = {
-    [1] = "BuyBoat",
-    [2] = "Lantern"
-}
-game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))   
 elseif game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") or game:GetService("Workspace").Enemies:FindFirstChild("Shark") then
     for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
   if  v.Name == "Terrorshark" or v.Name == "Shark" then
@@ -5221,7 +5225,7 @@ elseif game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") or gam
 end
 end
 end
-  end
+end
   end
   end)
  end
