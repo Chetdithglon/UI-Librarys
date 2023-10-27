@@ -5107,7 +5107,7 @@ ca:Toggle("Kill Cá ̉( Dễ Die )",_G.canho,function(value)
  StopTween(_G.canho)
  end)
 
- if _G.canho  then
+ 
 topos(CFrame.new(-16899.6133, 9.31711292, 492.155396, 0.00204202533, -0.00301179662, 0.999993384, -0.0185630079, 0.999823034, 0.00304919085, -0.999825597, -0.01856911, 0.00198575854))
      local args = {
     [1] = "BuyBoat",
@@ -5220,17 +5220,16 @@ elseif game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") or gam
 							game:GetService("VirtualInputManager"):SendKeyEvent(true,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
 							game:GetService("VirtualInputManager"):SendKeyEvent(false,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
 						
-       end
 end
 end
 end
 end
 end
-  end)
- end
- end
+end
 end)
 end
+end
+end)
  
  
  
