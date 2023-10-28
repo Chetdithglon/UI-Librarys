@@ -5109,11 +5109,11 @@ ca:Toggle("Kill Cá ̉( Dễ Die )",_G.canho,function(value)
  end)
 spawn(function()
  while wait() do
- if _G.canho and World3 then
+ if _G.canho then
  pcall(function()
-  if game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") or game:GetService("Workspace").Enemies:FindFirstChild("Shark")  then
+  if game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") or game:GetService("Workspace").Enemies:FindFirstChild("Shark") then
   for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-  if  v.Name == "Terrorshark" or v.Name == "Shark" then
+  if v.Name == "Shark" or v.Name == "Terrorshark" then
   if v.Humanoid.Health > 0 then
   repeat wait()
   AutoHaki()
@@ -5132,17 +5132,17 @@ spawn(function()
   else
    StartMagnetBoneMon = false
   for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
-  if v.Name == "Terrorshark" then
-       topos(v.HumanoidRootPart.CFrame * MethodFarm)
-  elseif v.Name == "Shark" then
-       topos(v.HumanoidRootPart.CFrame * MethodFarm)
+  if v.Name == "Shark" then
+  topos(v.HumanoidRootPart.CFrame * MethodFarm)
+  elseif v.Name == "Terrorshark" then
+  topos(v.HumanoidRootPart.CFrame * MethodFarm)
   end
   end
   end
   end)
  end
  end
-end)
+ end)
 
 
 
@@ -14150,6 +14150,5 @@ end)
 
 wait(4)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/UI-Librarys/main/gerad%20lib'))()
-
 
 
