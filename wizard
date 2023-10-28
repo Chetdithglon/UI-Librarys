@@ -5083,11 +5083,12 @@ end
 end)
 
 ca:Button("Tăng Tốc Độ + An Toàn",function()
-     game.Workspace.Boats.Lantern.VehicleSeat.MaxSpeed = 375
+     game.Workspace.Boats.Lantern.VehicleSeat.MaxSpeed = 350
      game.Workspace.Boats.Lantern.VehicleSeat.Size = Vector3.new(game.Workspace.Boats.Lantern.VehicleSeat.Size.X + 2.9571428298950195,game.Workspace.Boats.Lantern.VehicleSeat.Size.Y + 325,game.Workspace.Boats.Lantern.VehicleSeat.Size.Z + 2.9571428298950195)
 end)
-ca:Button("Tăng Tốc Độ ( Vip )",function()
-     game.Workspace.Boats.Lantern.VehicleSeat.MaxSpeed = 450
+ca:Button("Tăng Tốc Độ  ( Beast Hunter )",function()
+     game.Workspace.Boats["Beast Hunter"].VehicleSeat.MaxSpeed = 350
+game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size = Vector3.new(game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size.X + 2.857142925262451,game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size.Y + 325,game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size.Z + 2.857142925262451)
 end)
 
 ca:Button("Xóa Xương Mù",function()
@@ -14149,7 +14150,6 @@ end)
 
 wait(4)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/UI-Librarys/main/gerad%20lib'))()
-
 
 
 
