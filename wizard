@@ -5094,6 +5094,11 @@ end)
 ca:Button("Xóa Xương Mù",function()
     game:GetService("Lighting").BaseAtmosphere:Destroy()
     game:GetService("Lighting").SeaTerrorCC:Destroy()
+    game.Lighting.LightingLayers.Atmosphere:Destroy()
+wait()
+game.Lighting.LightingLayers.DarkFog:Destroy()
+wait()
+game.Lighting.FogEnd = 100000
 end)
 
 ca:Button("Bay",function()
@@ -14150,5 +14155,4 @@ end)
 
 wait(4)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/UI-Librarys/main/gerad%20lib'))()
-
 
