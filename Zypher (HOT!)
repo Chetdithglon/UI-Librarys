@@ -5082,17 +5082,22 @@ game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF
 end
 end)
 
-ca:Button("Tăng Tốc Độ + An Toàn",function()
-     game.Workspace.Boats.Lantern.VehicleSeat.MaxSpeed = 375
-     game.Workspace.Boats.Lantern.VehicleSeat.Size = Vector3.new(game.Workspace.Boats.Lantern.VehicleSeat.Size.X + 2.9571428298950195,game.Workspace.Boats.Lantern.VehicleSeat.Size.Y + 325,game.Workspace.Boats.Lantern.VehicleSeat.Size.Z + 2.9571428298950195)
+ca:Slider("Tc ",1,1000,200,function(value)
+ game.Workspace.Boats.Lantern.VehicleSeat.MaxSpeed = value
 end)
-ca:Button("Tăng Tốc Độ ( Vip )",function()
-     game.Workspace.Boats.Lantern.VehicleSeat.MaxSpeed = 450
+ca:Button("Tăng Tốc Độ  ( Beast Hunter )",function()
+     game.Workspace.Boats["Beast Hunter"].VehicleSeat.MaxSpeed = 350
+game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size = Vector3.new(game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size.X + 2.857142925262451,game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size.Y + 325,game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size.Z + 2.857142925262451)
 end)
 
 ca:Button("Xóa Xương Mù",function()
     game:GetService("Lighting").BaseAtmosphere:Destroy()
     game:GetService("Lighting").SeaTerrorCC:Destroy()
+    game.Lighting.LightingLayers.Atmosphere:Destroy()
+wait()
+game.Lighting.LightingLayers.DarkFog:Destroy()
+wait()
+game.Lighting.FogEnd = 100000
 end)
 
 ca:Button("Bay",function()
@@ -5106,144 +5111,43 @@ ca:Toggle("Kill Cá ̉( Dễ Die )",_G.canho,function(value)
  _G.click = value
  StopTween(_G.canho)
  end)
-function topos(Pos)
-        Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-        if game.Players.LocalPlayer.Character.Humanoid.Sit == true then game.Players.LocalPlayer.Character.Humanoid.Sit = false end
-        pcall(function() tween = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(Distance/320, Enum.EasingStyle.Linear),{CFrame = Pos}) end)
-        tween:Play()
-        if Distance <= 250 then
-            tween:Cancel()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Pos
-        end
-        if _G.StopTween == true then
-            tween:Cancel()
-            _G.Clip = false
-        end
-    end
-    
-    function GetDistance(target)
-        return math.floor((target.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude)
-    end
-
-
-function StopTween(target)
-	if not target then
-		_G.StopTween = true
-		wait()
-		topos(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-		wait()
-		if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
-			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
-		end
-		_G.StopTween = false
-		_G.Clip = false
-	end
-end
-
-
-if not game.Workspace.Boats:FindFirstChild("PirateGrandBrigade") then
-local args = {
-    [1] = "BuyBoat",
-    [2] = "PirateGrandBrigade"
-}
-
-game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-end
-wait(1)
-game.Workspace.Boats.PirateGrandBrigade.VehicleSeat.Position = Vector3.new(game.Workspace.Boats.PirateGrandBrigade.VehicleSeat.Position.X + -30000 ,game.Workspace.Boats.PirateGrandBrigade.VehicleSeat.Position.Y + 0,game.Workspace.Boats.PirateGrandBrigade.VehicleSeat.Position.Z + 0)
 spawn(function()
  while wait() do
- if _G.KillShark then
+ if _G.canho then
  pcall(function()
- if _G.KillShark  then
-     for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-  if v.Name and v:FindFirstChild("Terrorshark")  and v:FindFirstChild("Shark") then
+  if game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") or game:GetService("Workspace").Enemies:FindFirstChild("Shark") then
+  for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+  if v.Name == "Shark" or v.Name == "Terrorshark" then
+  if v.Humanoid.Health > 0 then
+  repeat wait()
+  AutoHaki()
   EquipWeapon(_G.Select_Weapon)
-  if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-  local args = {
-   [1] = "Buso"
-  }
-  game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-  end
-  PosMon = v.HumanoidRootPart.CFrame
+  StartMagnetBoneMon = true
   v.HumanoidRootPart.CanCollide = false
-  v.Head.CanCollide = false
-   v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-   StartMagnet = false
-   topos(v.HumanoidRootPart.CFrame * MethodFarm)
-   game:GetService'VirtualUser':CaptureController()
- game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
- StartMagnet = true
-  PosMon = v.HumanoidRootPart.CFrame
-
-    for _,v in next, workspace.Boats.PirateGrandBrigade:GetDescendants() do
-    if v.Name:find("VehicleSeat") then
-                           topos(v.CFrame)
-end
-end
-end
-end
+  v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+  PosMonBone = v.HumanoidRootPart.CFrame
+  topos(v.HumanoidRootPart.CFrame * MethodFarm)
+  game:GetService'VirtualUser':CaptureController()
+  game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+  until _G.canho == false or not v.Parent or v.Humanoid.Health <= 0
+  end
+  end
+  end
+  else
+   StartMagnetBoneMon = false
+  for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
+  if v.Name == "Shark" then
+  topos(v.HumanoidRootPart.CFrame * MethodFarm)
+  elseif v.Name == "Terrorshark" then
+  topos(v.HumanoidRootPart.CFrame * MethodFarm)
+  end
+  end
+  end
+  end)
+ end
  end
  end)
-end
-end
-end)
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
 
 
 
@@ -11204,203 +11108,173 @@ P:Toggle("Aim Skill Trong Vòng",_G.Aimbot_Skill_Fov,function(value)
 StopTween(_G.Aimbot_Skill_Fov)
 end)
 
- Teleport:Seperator(" Map ")
+ Teleport:Seperator(" Island ")
  
  if World1 then
- Teleport:Dropdown("Chọn Đảo", {
-  "WindMill",
-  "Marine",
-  "Middle Town",
-  "Jungle",
-  "Pirate Village",
-  "Desert",
-  "Snow Island",
-  "MarineFord",
-  "Colosseum",
-  "Sky Island 1",
-  "Sky Island 2",
-  "Sky Island 3",
-  "Prison",
-  "Magma Village",
-  "Under Water Island",
-  "Fountain City",
-  "Shank Room",
-  "Mob Island"
+ Teleport:Dropdown("Select Island", {
+  "Đảo Hải Tặc",
+  "Đảo Hải Quân",
+  "Đảo Trung Tâm",
+  "Rừng",
+  "Đảo Chúa Hề",
+  "Đảo Xa Mạc",
+  "Đảo Tuyết",
+  "Căng Cứ Hải Quân",
+  "Đấu trường La Mã",
+  "Đảo trời 1",
+  "Đảo trời 2",
+  "Đảo trời 3",
+  "Nhà Ngục",
+  "Đảo Dung Nham",
+  "Đảo Người Cá",
+  "Đảo Frency",
+  "Chỗ Shank Cụt Cay",
+  "Đảo Nv Saber"
  },function(value)
   _G.SelectIsland = value
   end)
  end
  
  if World2 then
- Teleport:Dropdown("Chọn Đảo", {
-  "The Cafe",
-  "Frist Spot",
-  "Dark Area",
-  "Flamingo Mansion",
-  "Flamingo Room",
-  "Green Zone",
-  "Factory",
-  "Colossuim",
-  "Zombie Island",
-  "Two Snow Mountain",
-  "Punk Hazard",
-  "Cursed Ship",
-  "Ice Castle",
-  "Forgotten Island",
-  "Ussop Island",
-  "Mini Sky Island"
+ Teleport:Dropdown("Select Island", {
+  "Cà phê",
+  "Đảo Đầu Tiên",
+  "Đảo Râu Đen",
+  "Cổng Vào Flamingo",
+  "Phòng Flamingo",
+  "Vùng xanh",
+  "Nhà máy",
+  "Đấu trường",
+  "Đảo Zombie",
+  "Núi Tuyết",
+  "Đảo Raid",
+  "Con tàu bị nguyền rủa",
+  "Lâu đài băng",
+  "Đảo cuối Sea2",
+  "Đảo Usopp",
+  "Đảo Lấy Gậy Lôi v2"
  },function(value)
   _G.SelectIsland = value
   end)
  end
  
- if World2 and World1 then
+ if World3 then
+ Teleport:Dropdown("Select Island", {
+  "Cảng",
+  "Dinh Thự ( Đảo Rùa )",
+  "Cây đại thụ",
+  "Pháo Đài Biển",
+  "Đảo Phụ Nữ",
+  "Đảo Xương",
+  "Đảo Kem",
+  "Đảo Đậu Phộng",
+  "Đảo Bánh",
+  "Đảo Tuyết",
+  "Đảo Mới"
+ },function(value)
+  _G.SelectIsland = value
+  end)
+ end
+ 
  Teleport:Toggle("Teleport",false,function(value)
   _G.TeleportIsland = value
   if _G.TeleportIsland == true then
   repeat wait()
-  if _G.SelectIsland == "WindMill" then
+  if _G.SelectIsland == "Đảo Hải Tặc" then
   topos(CFrame.new(979.79895019531, 16.516613006592, 1429.0466308594))
-  elseif _G.SelectIsland == "Marine" then
+  elseif _G.SelectIsland == "Đảo Hải Quân" then
   topos(CFrame.new(-2566.4296875, 6.8556680679321, 2045.2561035156))
-  elseif _G.SelectIsland == "Middle Town" then
+  elseif _G.SelectIsland == "Đảo Trung Tâm" then
   topos(CFrame.new(-690.33081054688, 15.09425163269, 1582.2380371094))
-  elseif _G.SelectIsland == "Jungle" then
+  elseif _G.SelectIsland == "Rừng" then
   topos(CFrame.new(-1612.7957763672, 36.852081298828, 149.12843322754))
-  elseif _G.SelectIsland == "Pirate Village" then
+  elseif _G.SelectIsland == "Đảo Chúa Hề" then
   topos(CFrame.new(-1181.3093261719, 4.7514905929565, 3803.5456542969))
-  elseif _G.SelectIsland == "Desert" then
+  elseif _G.SelectIsland == "Đảo Xa Mạc" then
   topos(CFrame.new(944.15789794922, 20.919729232788, 4373.3002929688))
-  elseif _G.SelectIsland == "Snow Island" then
+  elseif _G.SelectIsland == "Đảo Tuyết" then
   topos(CFrame.new(1347.8067626953, 104.66806030273, -1319.7370605469))
-  elseif _G.SelectIsland == "MarineFord" then
+  elseif _G.SelectIsland == "Căng Cứ Hải Quân" then
   topos(CFrame.new(-4914.8212890625, 50.963626861572, 4281.0278320313))
-  elseif _G.SelectIsland == "Colosseum" then
+  elseif _G.SelectIsland == "Đấu trường La Mã" then
   topos(CFrame.new(-1427.6203613281, 7.2881078720093, -2792.7722167969))
-  elseif _G.SelectIsland == "Sky Island 1" then
+  elseif _G.SelectIsland == "Đảo trời 1" then
   topos(CFrame.new(-4869.1025390625, 733.46051025391, -2667.0180664063))
-  elseif _G.SelectIsland == "Sky Island 2" then
+  elseif _G.SelectIsland == "Đảo trời 2" then
   game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4607.82275, 872.54248, -1667.55688))
-  elseif _G.SelectIsland == "Sky Island 3" then
+  elseif _G.SelectIsland == "Đảo trời 3" then
   game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))
-  elseif _G.SelectIsland == "Prison" then
+  elseif _G.SelectIsland == "Nhà Ngục" then
   topos(CFrame.new(4875.330078125, 5.6519818305969, 734.85021972656))
-  elseif _G.SelectIsland == "Magma Village" then
+  elseif _G.SelectIsland == "Đảo Dung Nham" then
   topos(CFrame.new(-5247.7163085938, 12.883934020996, 8504.96875))
-  elseif _G.SelectIsland == "Under Water Island" then
+  elseif _G.SelectIsland == "Đảo Người Cá" then
   game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
-  elseif _G.SelectIsland == "Fountain City" then
+  elseif _G.SelectIsland == "Đảo Frency" then
   topos(CFrame.new(5127.1284179688, 59.501365661621, 4105.4458007813))
-  elseif _G.SelectIsland == "Shank Room" then
+  elseif _G.SelectIsland == "Chỗ Shank Cụt Cay" then
   topos(CFrame.new(-1442.16553, 29.8788261, -28.3547478))
-  elseif _G.SelectIsland == "Mob Island" then
+  elseif _G.SelectIsland == "Đảo Nv Saber" then
   topos(CFrame.new(-2850.20068, 7.39224768, 5354.99268))
-  elseif _G.SelectIsland == "The Cafe" then
+  elseif _G.SelectIsland == "Cà phê" then
   topos(CFrame.new(-380.47927856445, 77.220390319824, 255.82550048828))
-  elseif _G.SelectIsland == "Frist Spot" then
+  elseif _G.SelectIsland == "Đảo Đầu Tiên" then
   topos(CFrame.new(-11.311455726624, 29.276733398438, 2771.5224609375))
-  elseif _G.SelectIsland == "Dark Area" then
+  elseif _G.SelectIsland == "Đảo Râu Đen" then
   topos(CFrame.new(3780.0302734375, 22.652164459229, -3498.5859375))
-  elseif _G.SelectIsland == "Flamingo Mansion" then
+  elseif _G.SelectIsland == "Cổng Vào Flamingo" then
   topos(CFrame.new(-483.73370361328, 332.0383605957, 595.32708740234))
-  elseif _G.SelectIsland == "Flamingo Room" then
+  elseif _G.SelectIsland == "Phòng Flamingo" then
   topos(CFrame.new(2284.4140625, 15.152037620544, 875.72534179688))
-  elseif _G.SelectIsland == "Green Zone" then
+  elseif _G.SelectIsland == "Vùng xanh" then
   topos(CFrame.new(-2448.5300292969, 73.016105651855, -3210.6306152344))
-  elseif _G.SelectIsland == "Factory" then
+  elseif _G.SelectIsland == "Nhà máy" then
   topos(CFrame.new(424.12698364258, 211.16171264648, -427.54049682617))
-  elseif _G.SelectIsland == "Colossuim" then
+  elseif _G.SelectIsland == "Đấu trường" then
   topos(CFrame.new(-1503.6224365234, 219.7956237793, 1369.3101806641))
-  elseif _G.SelectIsland == "Zombie Island" then
+  elseif _G.SelectIsland == "Đảo Zombie" then
   topos(CFrame.new(-5622.033203125, 492.19604492188, -781.78552246094))
-  elseif _G.SelectIsland == "Two Snow Mountain" then
+  elseif _G.SelectIsland == "Núi Tuyết" then
   topos(CFrame.new(753.14288330078, 408.23559570313, -5274.6147460938))
-  elseif _G.SelectIsland == "Punk Hazard" then
+  elseif _G.SelectIsland == "Đảo Raid" then
   topos(CFrame.new(-6127.654296875, 15.951762199402, -5040.2861328125))
-  elseif _G.SelectIsland == "Cursed Ship" then
+  elseif _G.SelectIsland == "Con tàu bị nguyền rủa" then
   topos(CFrame.new(923.40197753906, 125.05712890625, 32885.875))
-  elseif _G.SelectIsland == "Ice Castle" then
+  elseif _G.SelectIsland == "Lâu đài băng" then
   topos(CFrame.new(6148.4116210938, 294.38687133789, -6741.1166992188))
-  elseif _G.SelectIsland == "Forgotten Island" then
+  elseif _G.SelectIsland == "Đảo cuối Sea2" then
   topos(CFrame.new(-3032.7641601563, 317.89672851563, -10075.373046875))
-  elseif _G.SelectIsland == "Ussop Island" then
+  elseif _G.SelectIsland == "Đảo Usopp" then
   topos(CFrame.new(4816.8618164063, 8.4599885940552, 2863.8195800781))
-  elseif _G.SelectIsland == "Mini Sky Island" then
+  elseif _G.SelectIsland == "Đảo Lấy Gậy Lôi v2" then
   topos(CFrame.new(-288.74060058594, 49326.31640625, -35248.59375))
-  elseif _G.SelectIsland == "Great Tree" then
+  elseif _G.SelectIsland == "Cây đại thụ" then
   topos(CFrame.new(2681.2736816406, 1682.8092041016, -7190.9853515625))
-  elseif _G.SelectIsland == "Castle On The Sea" then
-  topos(CFrame.new(-5074.45556640625, 314.5155334472656, -2991.054443359375))
-  elseif _G.SelectIsland == "MiniSky" then
-  topos(CFrame.new(-260.65557861328, 49325.8046875, -35253.5703125))
-  elseif _G.SelectIsland == "Port Town" then
+  elseif _G.SelectIsland == "Pháo Đài Biển" then
+  game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5085.23681640625, 316.5072021484375, -3156.202880859375)
+  elseif _G.SelectIsland == "Cảng" then
   topos(CFrame.new(-290.7376708984375, 6.729952812194824, 5343.5537109375))
-  elseif _G.SelectIsland == "Hydra Island" then
+  elseif _G.SelectIsland == "Đảo Phụ Nữ" then
   topos(CFrame.new(5228.8842773438, 604.23400878906, 345.0400390625))
-  elseif _G.SelectIsland == "Floating Turtle" then
-  topos(CFrame.new(-13274.528320313, 531.82073974609, -7579.22265625))
-  elseif _G.SelectIsland == "Mansion" then
+  elseif _G.SelectIsland == "Dinh Thự ( Đảo Rùa )" then
   game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-12471.169921875, 374.94024658203, -7551.677734375))
-  elseif _G.SelectIsland == "Haunted Castle" then
+  elseif _G.SelectIsland == "Đảo Xương" then
   topos(CFrame.new(-9515.3720703125, 164.00624084473, 5786.0610351562))
-  elseif _G.SelectIsland == "Ice Cream Island" then
+  elseif _G.SelectIsland == "Đảo Kem" then
   topos(CFrame.new(-902.56817626953, 79.93204498291, -10988.84765625))
-  elseif _G.SelectIsland == "Peanut Island" then
+  elseif _G.SelectIsland == "Đảo Đậu Phộng" then
   topos(CFrame.new(-2062.7475585938, 50.473892211914, -10232.568359375))
-  elseif _G.SelectIsland == "Cake Island" then
+  elseif _G.SelectIsland == "Đảo Bánh" then
   topos(CFrame.new(-1884.7747802734375, 19.327526092529297, -11666.8974609375))
-  elseif _G.SelectIsland == "Noname Island(New)" then
+  elseif _G.SelectIsland == "Đảo Mới" then
+  topos(CFrame.new(-16899.6133, 9.31711292, 492.155396, 0.00204202533, -0.00301179662, 0.999993384, -0.0185630079, 0.999823034, 0.00304919085, -0.999825597, -0.01856911, 0.00198575854))    
+  elseif _G.SelectIsland == "Đảo Tuyết " then
   topos(CFrame.new(231.742981, 25.3354111, -12199.0537, 0.998278677, -5.16006757e-08, 0.0586484075, 4.79685092e-08, 1, 6.33390442e-08, -0.0586484075, -6.04167383e-08, 0.998278677))
   end
   until not _G.TeleportIsland
   end
   StopTween(_G.TeleportIsland)
  end)
- end
-
-if World3 then
-Teleport:Button("Dinh Thự ( Đảo Rùa )",function()
- game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-12471.169921875, 374.94024658203, -7551.677734375))
-end)
-Teleport:Button("Pháo Đài Biển",function()
-game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5085.23681640625, 316.5072021484375, -3156.202880859375)
-wait(0.1)
-game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5085.23681640625, 316.5072021484375, -3156.202880859375)
-wait(0.3)
-game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5085.23681640625, 316.5072021484375, -3156.202880859375)
-wait(1)
-topos(CFrame.new(-5074.45556640625, 314.5155334472656, -2991.054443359375))
-end)
-Teleport:Button("Cảng",function()
-topos(CFrame.new(-290.7376708984375, 6.729952812194824, 5343.5537109375))
-end)
-Teleport:Button("Cây đại thụ",function()
-topos(CFrame.new(2681.2736816406, 1682.8092041016, -7190.9853515625))
-end)
-
-Teleport:Button("Đảo Phụ Nữ",function()
-topos(CFrame.new(5228.8842773438, 604.23400878906, 345.0400390625))
-end)
-Teleport:Button("Đảo Xương",function()
-topos(CFrame.new(-9515.3720703125, 164.00624084473, 5786.0610351562))
-end)
-Teleport:Button("Đảo Kem",function()
-topos(CFrame.new(-902.56817626953, 79.93204498291, -10988.84765625))
-end)
-Teleport:Button("Đảo Đậu Phộng",function()
-topos(CFrame.new(-2062.7475585938, 50.473892211914, -10232.568359375))
-end)
-Teleport:Button("Đảo Bánh ( Katakuri )",function()
-topos(CFrame.new(-1884.7747802734375, 19.327526092529297, -11666.8974609375))
-end)
-Teleport:Button("Đảo Cacoa",function()
-topos(CFrame.new(231.742981, 25.3354111, -12199.0537, 0.998278677, -5.16006757e-08, 0.0586484075, 4.79685092e-08, 1, 6.33390442e-08, -0.0586484075, -6.04167383e-08, 0.998278677))
-end)
-Teleport:Button("Đảo Tuyết",function()
-    topos(CFrame.new(-1230.76746, 136.726608, -14584.2383, -0.31849435, -0.0423581265, -0.946977854, 2.46596755e-07, 0.999001145, -0.0446851999, 0.947924733, -0.0142322043, -0.31817621))
-
-end)
-end
 
 Teleport:Seperator(" WORLD ")
  
@@ -14250,7 +14124,3 @@ end)
 
 wait(4)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/UI-Librarys/main/gerad%20lib'))()
-
-
-
-
