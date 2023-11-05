@@ -5063,27 +5063,7 @@ end)
  topos(CFrame.new(-16899.6133, 9.31711292, 492.155396, 0.00204202533, -0.00301179662, 0.999993384, -0.0185630079, 0.999823034, 0.00304919085, -0.999825597, -0.01856911, 0.00198575854))
 end)
 
-
-ca:Button("Mua Thuyền",function()
-    local args = {
-    [1] = "BuyBoat",
-    [2] = "Lantern"
-}
-
-game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-     if not  game.Workspace.Boats.Lantern:Destroy() then
-    wait(0.5)
-    local args = {
-    [1] = "BuyBoat",
-    [2] = "Lantern"
-}
-
-game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-end
-end)
-
-
-ca:Slider("Tc ",1,1000,200,function(value)
+ca:Slider("Tăng Tốc Tất Cả Thuyền",1,1000,123,function(value)
 local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
 local newMaxSpeed = value -- Giá trị tốc độ tối đa mới (tùy chỉnh theo nhu cầu)
 
@@ -5102,34 +5082,17 @@ for _, boat in pairs(boatsFolder:GetChildren()) do
 end
 end)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-ca:Button("Tăng Tốc Độ  ( Beast Hunter )",function()
-     game.Workspace.Boats["Beast Hunter"].VehicleSeat.MaxSpeed = 350
-game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size = Vector3.new(game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size.X + 2.857142925262451,game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size.Y + 325,game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size.Z + 2.857142925262451)
+ca:Toggle("Trời Sáng",_G.Troisangvcl,function(value)
+_G.Troisangvcl = value
+ StopTween(_G.Troisangvcl)
 end)
-
+spawn(function()
+ while wait() do
+if _G.Troisangvcl then 
+game.Lighting.ClockTime = 14
+end
+end
+end)
 ca:Button("Xóa Xương Mù",function()
     game:GetService("Lighting").BaseAtmosphere:Destroy()
     game:GetService("Lighting").SeaTerrorCC:Destroy()
