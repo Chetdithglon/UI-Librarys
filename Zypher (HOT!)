@@ -5082,9 +5082,10 @@ game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF
 end
 end)
 
+
 ca:Slider("Tc ",1,1000,200,function(value)
 local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
-local accelerationAmount = value -- Số liệu tăng tốc (tùy chỉnh theo nhu cầu)
+local newMaxSpeed = value -- Giá trị tốc độ tối đa mới (tùy chỉnh theo nhu cầu)
 
 -- Lặp qua tất cả các đối tượng con trong thư mục "Boats"
 for _, boat in pairs(boatsFolder:GetChildren()) do
@@ -5093,8 +5094,8 @@ for _, boat in pairs(boatsFolder:GetChildren()) do
         for _, child in pairs(boat:GetChildren()) do
             if child:IsA("VehicleSeat") then
                 -- Đảm bảo rằng đối tượng con là một VehicleSeat
-                -- Tăng tốc của ghế trên phương tiện
-                child.Throttle = accelerationAmount
+                -- Đặt MaxSpeed của ghế trên phương tiện thành giá trị mới
+                child.MaxSpeed = newMaxSpeed
             end
         end
     end
