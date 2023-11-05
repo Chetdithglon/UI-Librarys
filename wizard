@@ -5099,7 +5099,7 @@ end)
 
 
 
-ca:Slider("Thuyền Bay ( Dưới 300 Mới Có levi )",1,1000,0,function(value)
+ca:Slider("Nâng Cao Ghế Ngồi",1,300,0,function(value)
 
 local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
 local sizeChange = Vector3.new(0,value, 0) -- Thay đổi kích thước (tăng kích thước Y thêm 325 đơn vị)
