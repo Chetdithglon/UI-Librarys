@@ -5064,33 +5064,6 @@ end)
 end)
 
 
-ca:Button("Mua Thuyền",function()
-    local args = {
-    [1] = "BuyBoat",
-    [2] = "Lantern"
-}
-
-game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-     if not  game.Workspace.Boats.Lantern:Destroy() then
-    wait(0.5)
-    local args = {
-    [1] = "BuyBoat",
-    [2] = "Lantern"
-}
-
-game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-end
-end)
-
-ca:Button("Tăng Tốc Độ + An Toàn",function()
-     game.Workspace.Boats.Lantern.VehicleSeat.MaxSpeed = 350
-     game.Workspace.Boats.Lantern.VehicleSeat.Size = Vector3.new(game.Workspace.Boats.Lantern.VehicleSeat.Size.X + 2.9571428298950195,game.Workspace.Boats.Lantern.VehicleSeat.Size.Y + 325,game.Workspace.Boats.Lantern.VehicleSeat.Size.Z + 2.9571428298950195)
-end)
-ca:Button("Tăng Tốc Độ  ( Beast Hunter )",function()
-     game.Workspace.Boats["Beast Hunter"].VehicleSeat.MaxSpeed = 350
-game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size = Vector3.new(game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size.X + 2.857142925262451,game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size.Y + 325,game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size.Z + 2.857142925262451)
-end)
-
 ca:Button("Xóa Xương Mù",function()
     game:GetService("Lighting").BaseAtmosphere:Destroy()
     game:GetService("Lighting").SeaTerrorCC:Destroy()
@@ -5104,6 +5077,59 @@ end)
 ca:Button("Bay",function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/lklklkl/main/bAY%202'))()
  end)
+
+ca:Slider("Tăng Tốc Tất Cả Thuyền",1,1000,123,function(value)
+local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
+local newMaxSpeed = value -- Giá trị tốc độ tối đa mới (tùy chỉnh theo nhu cầu)
+
+-- Lặp qua tất cả các đối tượng con trong thư mục "Boats"
+for _, boat in pairs(boatsFolder:GetChildren()) do
+    if boat:IsA("Model") then
+        -- Đảm bảo rằng đối tượng là một mô hình (thuyền)
+        for _, child in pairs(boat:GetChildren()) do
+            if child:IsA("VehicleSeat") then
+                -- Đảm bảo rằng đối tượng con là một VehicleSeat
+                -- Đặt MaxSpeed của ghế trên phương tiện thành giá trị mới
+                child.MaxSpeed = newMaxSpeed
+            end
+        end
+    end
+end
+end)
+
+
+
+ca:Slider("Thuyền Bay ( Dưới 300 Mới Có levi )",1,1000,0,function(value)
+
+local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
+local sizeChange = Vector3.new(0,value, 0) -- Thay đổi kích thước (tăng kích thước Y thêm 325 đơn vị)
+
+-- Lặp qua tất cả các đối tượng trong thư mục "Boats"
+for _, boat in pairs(boatsFolder:GetChildren()) do
+    if boat:IsA("Model") then
+        -- Đảm bảo rằng đối tượng là một mô hình (thuyền)
+        local vehicleSeat = boat:FindFirstChild("VehicleSeat") -- Tìm đối tượng "VehicleSeat" trong thuyền
+
+        if vehicleSeat then
+            -- Nếu tìm thấy "VehicleSeat", điều chỉnh kích thước của nó
+            vehicleSeat.Size = vehicleSeat.Size + sizeChange
+        end
+    end
+end
+end)
+
+ca:Toggle("Trời Sáng   ( Lỗi )",_G.Troisangvcl,function(value)
+_G.Troisangvcl = value
+ StopTween(_G.Troisangvcl)
+end)
+spawn(function()
+ while wait() do
+if _G.Troisangvcl then 
+game.Lighting.ClockTime = 14
+end
+end
+end)
+
 
 ca:Toggle("Kill Cá ̉( Dễ Die )",_G.canho,function(value)
  _G.canho = value
