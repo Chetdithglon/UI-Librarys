@@ -5090,6 +5090,23 @@ spawn(function()
  while wait() do
 if _G.Troisangvcl then 
 game.Lighting.ClockTime = 14
+game.Lighting.ClockTime = 14
+game.Lighting.ClockTime = 14
+game.Lighting.ClockTime = 14
+game.Lighting.ClockTime = 14
+game.Lighting.ClockTime = 14
+game.Lighting.ClockTime = 14
+game.Lighting.ClockTime = 14
+game.Lighting.ClockTime = 14
+game.Lighting.ClockTime = 14
+game.Lighting.ClockTime = 14
+game.Lighting.ClockTime = 14
+game.Lighting.ClockTime = 14
+game.Lighting.ClockTime = 14
+game.Lighting.ClockTime = 14
+game.Lighting.ClockTime = 14
+game.Lighting.ClockTime = 14
+game.Lighting.ClockTime = 14
 end
 end
 end)
