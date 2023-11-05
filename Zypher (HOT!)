@@ -5083,8 +5083,47 @@ end
 end)
 
 ca:Slider("Tc ",1,1000,200,function(value)
- game.Workspace.Boats.Lantern.VehicleSeat.MaxSpeed = value
+local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
+local accelerationAmount = value -- Số liệu tăng tốc (tùy chỉnh theo nhu cầu)
+
+-- Lặp qua tất cả các đối tượng con trong thư mục "Boats"
+for _, boat in pairs(boatsFolder:GetChildren()) do
+    if boat:IsA("Model") then
+        -- Đảm bảo rằng đối tượng là một mô hình (thuyền)
+        for _, child in pairs(boat:GetChildren()) do
+            if child:IsA("VehicleSeat") then
+                -- Đảm bảo rằng đối tượng con là một VehicleSeat
+                -- Tăng tốc của ghế trên phương tiện
+                child.Throttle = accelerationAmount
+            end
+        end
+    end
+end
 end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ca:Button("Tăng Tốc Độ  ( Beast Hunter )",function()
      game.Workspace.Boats["Beast Hunter"].VehicleSeat.MaxSpeed = 350
 game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size = Vector3.new(game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size.X + 2.857142925262451,game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size.Y + 325,game.Workspace.Boats["Beast Hunter"].VehicleSeat.Size.Z + 2.857142925262451)
