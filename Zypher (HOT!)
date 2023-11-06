@@ -5092,6 +5092,7 @@ for _, boat in pairs(boatsFolder:GetChildren()) do
         end
     end
 end
+
  ca:Dropdown("Select Island", {
   "150",
   "200",
@@ -5104,10 +5105,33 @@ end
   "550",
   "600"
  },function(value)
-  _G.Tocdothuyen = true
+  _G.Tocdothuyen = value
  end)
 
 
+
+
+ local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
+  -- Lặp qua tất cả các đối tượng con trong thư mục "Boats"
+for _, boat in pairs(boatsFolder:GetChildren()) do
+    if boat:IsA("Model") then
+        -- Đảm bảo rằng đối tượng là một mô hình (thuyền)
+        for _, child in pairs(boat:GetChildren()) do
+            if child:IsA("VehicleSeat") then
+                -- Đảm bảo rằng đối tượng con là một VehicleSeat
+                -- Đặt MaxSpeed của ghế trên phương tiện thành giá trị mới
+                child.MaxSpeed = newMaxSpeed
+            end
+        end
+    end
+end
+
+
+
+Ca:Toggle("Chạy Setting",false,function(value)
+  _G.chaylenh = value
+  if _G.chaylenh == true then
+  repeat wait()
   if _G.Tocdothuyen == "150" then
   local newMaxSpeed = 150
   elseif _G.Tocdothuyen == "200" then
@@ -5129,6 +5153,38 @@ end
   elseif _G.Tocdothuyen == "600" then
   local newMaxSpeed = 600
   end
+  until not _G.chaylenh
+  end
+  StopTween(_G.chaylenh)
+ end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
