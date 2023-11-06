@@ -4773,7 +4773,7 @@ end)
 --------------------------
 local Main = Library:Tab("Main","rbxassetid://11446825283")
 local Weapon = Library:Tab("Weapons","rbxassetid://11446859498")
-local ca = Library:Tab("Update 20","rbxassetid://11446859498")
+local ca = Library:Tab("Update 20","♨")
 local Race = Library:Tab("Race V4","rbxassetid://11447069304")
 --local Stats = Library:Tab("Stats","rbxassetid://11447069304")
 local P = Library:Tab("Player","rbxassetid://11446900930")
