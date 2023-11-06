@@ -7628,14 +7628,6 @@ for i, bossName in ipairs(bossList) do
     end
     end
 
-local BossName
-if hasBoss then
-    BossName = Main:Dropdown("Chọn Boss Farm", bossList, function(value)
-        _G.Select_Boss = value
-    end)
-end
-
-
  if World3 then
 
 
@@ -7723,7 +7715,7 @@ end)
 		end
 	end)
 	
-
+end
 
 
 if World1 then
@@ -13645,4 +13637,3 @@ end)
 
 wait(4)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/UI-Librarys/main/gerad%20lib'))()
-end
