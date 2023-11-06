@@ -5143,17 +5143,20 @@ end)
 
 
 
-ca:Toggle("Trời Sáng   ( Lỗi )",_G.Troisangvcl,function(value)
-_G.Troisangvcl = value
- StopTween(_G.Troisangvcl)
+ca:Toggle("Trời Sáng", _G.Troisangvcl, function(value)
+    _G.Troisangvcl = value
+    StopTween(_G.Troisangvcl)
 end)
+
 spawn(function()
- while wait() do
-if _G.Troisangvcl then 
-game.Lighting.ClockTime = 14
-end
-end
+    while true do
+        if _G.Troisangvcl then
+            game.Lighting.ClockTime = 14
+        end
+        wait()  -- Chờ một lát trước khi kiểm tra lại
+    end
 end)
+
 
 
 ca:Toggle("Kill Cá ̉( Dễ Die )",_G.canho,function(value)
