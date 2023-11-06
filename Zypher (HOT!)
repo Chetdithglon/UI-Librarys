@@ -7585,9 +7585,6 @@ end
 end
 end)
 end)
- 
- if World3 then
-
 
 
 local bossList = {
@@ -7631,10 +7628,8 @@ end
 local BossName = Main:Dropdown("Chọn Boss Farm", bossList, function(value)
     _G.Select_Boss = value
 end)
-
-
-
-
+ 
+ if World3 then
 
 
 
