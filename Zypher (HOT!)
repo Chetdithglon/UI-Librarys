@@ -7618,8 +7618,18 @@ local bossLabels = {
 }
 
 for i, label in ipairs(bossLabels) do
-    updateBossStatus(label, label:GetText())
+    spawn(function()
+        while wait() do
+            pcall(function()
+                local objectName = label:GetText()
+                local object = game:GetService("ReplicatedStorage"):FindFirstChild(objectName)
+                local status = (object and "✅") or "❌"
+                label:Set("Status : " .. objectName .. " " .. status)
+            end)
+        end
+    end)
 end
+
 
 
  if World3 then
