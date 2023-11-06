@@ -7628,7 +7628,7 @@ end
 local BossName = Main:Dropdown("Chọn Boss Farm", bossList, function(value)
     _G.Select_Boss = value
 end)
- 
+
  if World3 then
 
 
@@ -13638,3 +13638,4 @@ end)
 
 wait(4)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/UI-Librarys/main/gerad%20lib'))()
+end
