@@ -4773,7 +4773,7 @@ end)
 --------------------------
 local Main = Library:Tab("Main","rbxassetid://11446825283")
 local Weapon = Library:Tab("Weapons","rbxassetid://11446859498")
-local ca = Library:Tab("Update 20","rbxassetid://11446859498")
+local ca = Library:Tab("Update 20","♨")
 local Race = Library:Tab("Race V4","rbxassetid://11447069304")
 --local Stats = Library:Tab("Stats","rbxassetid://11447069304")
 local P = Library:Tab("Player","rbxassetid://11446900930")
@@ -7585,17 +7585,127 @@ end
 end
 end)
 end)
+
+if World1 then
+local bossList = {
+    "Saber Expert",
+    "The Saw",
+    "The Saw",
+    "Greybeard",
+    "The Gorilla King",
+    "Bobby",
+    "Yeti",
+    "Mob Leader",
+    "Vice Admiral",
+    "Warden",
+    "Chief Warden",
+    "Swan",
+    "Magma Admiral",
+    "Fishman Lord",
+    "Wysper",
+    "Thunder God",
+    "Cyborg"
+}
+
+local bossStatus = {}
+
+for i, bossName in ipairs(bossList) do
+    bossStatus[i] = Main:Label("Status")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
+                    bossStatus[i]:Set("Spawn : " .. bossName .. " ✅ ")
+                else
+                    bossStatus[i]:Set("Spawn : " .. bossName .. " ❌ ")
+                end
+            end)
+        end
+    end)
+end
+
+end
+
+if World2 then
+local bossList = {
+    "Diamond",
+    "Jeremy",
+    "Fajita",
+    "Don Swan",
+    "Smoke Admiral",
+    "Cursed Captain",
+    "Darkbeard",
+    "Order",
+    "Awakened Ice Admiral",
+    "Tide Keeper"
+}
+
+local bossStatus = {}
+
+for i, bossName in ipairs(bossList) do
+    bossStatus[i] = Main:Label("Status")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
+                    bossStatus[i]:Set("Spawn : " .. bossName .. " ✅ ")
+                else
+                    bossStatus[i]:Set("Spawn : " .. bossName .. " ❌ ")
+                end
+            end)
+        end
+    end)
+end
+end
+
+
+
+
+
+
+
+
+if World3 then
+local bossList = {
+    "Stone",
+    "Island Empress",
+    "Kilo Admiral",
+    "Captain Elephant",
+    "Beautiful Pirate",
+    "Cake Queen",
+    "rip_indra True Form",
+    "Longma",
+    "Soul Reaper"
+}
+
+local bossStatus = {}
+
+for i, bossName in ipairs(bossList) do
+    bossStatus[i] = Main:Label("Status")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
+                    bossStatus[i]:Set("Spawn : " .. bossName .. " ✅ ")
+                else
+                    bossStatus[i]:Set("Spawn : " .. bossName .. " ❌ ")
+                end
+            end)
+        end
+    end)
+end
+end
+
+
+
+
+
+
  
  if World3 then
-
-
-
-
-
-
-
-
-
 
 
 Weapon:Seperator("Elite Hunter")
