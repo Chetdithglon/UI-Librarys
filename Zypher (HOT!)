@@ -7586,78 +7586,119 @@ end
 end)
 end)
 
-local worlds = {
-    {
-        name = "World1",
-        bosses = {
-            "Saber Expert",
-            "The Saw",
-            "The Saw",
-            "Greybeard",
-            "The Gorilla King",
-            "Bobby",
-            "Yeti",
-            "Mob Leader",
-            "Vice Admiral",
-            "Warden",
-            "Chief Warden",
-            "Swan",
-            "Magma Admiral",
-            "Fishman Lord",
-            "Wysper",
-            "Thunder God",
-            "Cyborg"
-        }
-    },
-    {
-        name = "World2",
-        bosses = {
-            "Diamond",
-            "Jeremy",
-            "Fajita",
-            "Don Swan",
-            "Smoke Admiral",
-            "Cursed Captain",
-            "Darkbeard",
-            "Order",
-            "Awakened Ice Admiral",
-            "Tide Keeper"
-        }
-    },
-    {
-        name = "World3",
-        bosses = {
-            "Stone",
-            "Island Empress",
-            "Kilo Admiral",
-            "Captain Elephant",
-            "Beautiful Pirate",
-            "Cake Queen",
-            "rip_indra True Form",
-            "Longma",
-            "Soul Reaper"
-        }
-    }
+if World1 then
+local bossList = {
+    "Saber Expert",
+    "The Saw",
+    "The Saw",
+    "Greybeard",
+    "The Gorilla King",
+    "Bobby",
+    "Yeti",
+    "Mob Leader",
+    "Vice Admiral",
+    "Warden",
+    "Chief Warden",
+    "Swan",
+    "Magma Admiral",
+    "Fishman Lord",
+    "Wysper",
+    "Thunder God",
+    "Cyborg"
 }
 
-for _, world in ipairs(worlds) do
-    if _G[world.name] then
-        for _, bossName in ipairs(world.bosses) do
-            local bossStatus = Main:Label("Status")
-            spawn(function()
-                while wait() do
-                    pcall(function()
-                        if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
-                            bossStatus:Set("Đã Có Boss : " .. bossName .. " ✅ ")
-                        else
-                            bossStatus:Set("Không Có Boss : " .. bossName .. " ❌ ")
-                        end
-                    end)
+local bossStatus = {}
+
+for i, bossName in ipairs(bossList) do
+    bossStatus[i] = Main:Label("Status")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
+                    bossStatus[i]:Set("Đã Có Boss : " .. bossName .. " ✅ ")
+                else
+                    bossStatus[i]:Set("Không Có Boss : " .. bossName .. " ❌ ")
                 end
             end)
         end
-    end
+    end)
 end
+
+end
+
+if World2 then
+local bossList = {
+    "Diamond",
+    "Jeremy",
+    "Fajita",
+    "Don Swan",
+    "Smoke Admiral",
+    "Cursed Captain",
+    "Darkbeard",
+    "Order",
+    "Awakened Ice Admiral",
+    "Tide Keeper"
+}
+
+local bossStatus = {}
+
+for i, bossName in ipairs(bossList) do
+    bossStatus[i] = Main:Label("Status")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
+                    bossStatus[i]:Set("Đã Có Boss : " .. bossName .. " ✅ ")
+                else
+                    bossStatus[i]:Set("Không Có Boss : " .. bossName .. " ❌ ")
+                end
+            end)
+        end
+    end)
+end
+end
+
+
+
+
+
+
+
+
+if World3 then
+local bossList = {
+    "Stone",
+    "Island Empress",
+    "Kilo Admiral",
+    "Captain Elephant",
+    "Beautiful Pirate",
+    "Cake Queen",
+    "rip_indra True Form",
+    "Longma",
+    "Soul Reaper"
+}
+
+local bossStatus = {}
+
+for i, bossName in ipairs(bossList) do
+    bossStatus[i] = Main:Label("Status")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
+                    bossStatus[i]:Set("Đã Có Boss : " .. bossName .. " ✅ ")
+                else
+                    bossStatus[i]:Set("Không Có Boss : " .. bossName .. " ❌ ")
+                end
+            end)
+        end
+    end)
+end
+end
+
 
 
 
