@@ -7586,7 +7586,6 @@ end
 end)
 end)
 
-
 local bossList = {
     "Saber Expert",
     "The Saw",
@@ -7608,8 +7607,8 @@ local bossList = {
 }
 
 local bossStatus = {}
-
 local hasBoss = false
+
 for i, bossName in ipairs(bossList) do
     if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
         hasBoss = true
@@ -7634,8 +7633,6 @@ if hasBoss then
     BossName = Main:Dropdown("Chọn Boss Farm", bossList, function(value)
         _G.Select_Boss = value
     end)
-else
-    BossName = Main:Label("Không có Boss")
 end
 
 
