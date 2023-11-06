@@ -5096,21 +5096,21 @@ end
 
 
 local boatSpeeds = {
-    ["150"] = 150,
-    ["200"] = 200,
-    ["250"] = 250,
-    ["300"] = 300,
-    ["350"] = 350,
-    ["400"] = 400,
-    ["450"] = 450,
-    ["500"] = 500,
-    ["550"] = 550,
-    ["600"] = 600
+    ["150 Tốc Độ"] = 150,
+    ["200 Tốc Độ"] = 200,
+    ["250 Tốc Độ"] = 250,
+    ["300 Tốc Độ"] = 300,
+    ["350 Tốc Độ"] = 350,
+    ["400 Tốc Độ"] = 400,
+    ["450 Tốc Độ"] = 450,
+    ["500 Tốc Độ"] = 500,
+    ["550 Tốc Độ"] = 550,
+    ["600 Tốc Độ"] = 600
 }
 
 local boatsFolder = game.Workspace.Boats
 
-ca:Dropdown("Select Island", boatSpeeds, function(value)
+ca:Dropdown("Setting Tốc Độ Thuyền", boatSpeeds, function(value)
     _G.Tocdothuyen = value
 end)
 
@@ -5141,23 +5141,48 @@ end)
 
 
 
-ca:Slider("Nâng Cao Ghế Ngồi",1,300,0,function(value)
+local boatsFolder = game.Workspace.Boats
+local sizeChange = Vector3.new(0, 0, 0)
 
-local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
-local sizeChange = Vector3.new(0,value, 0) -- Thay đổi kích thước (tăng kích thước Y thêm 325 đơn vị)
-
--- Lặp qua tất cả các đối tượng trong thư mục "Boats"
-for _, boat in pairs(boatsFolder:GetChildren()) do
-    if boat:IsA("Model") then
-        -- Đảm bảo rằng đối tượng là một mô hình (thuyền)
-        local vehicleSeat = boat:FindFirstChild("VehicleSeat") -- Tìm đối tượng "VehicleSeat" trong thuyền
-
-        if vehicleSeat then
-            -- Nếu tìm thấy "VehicleSeat", điều chỉnh kích thước của nó
-            vehicleSeat.Size = vehicleSeat.Size + sizeChange
+local function AdjustBoatSize()
+    for _, boat in pairs(boatsFolder:GetChildren()) do
+        if boat:IsA("Model") then
+            local vehicleSeat = boat:FindFirstChild("VehicleSeat")
+            if vehicleSeat then
+                vehicleSeat.Size = vehicleSeat.Size + sizeChange
+            end
         end
     end
 end
+
+ca:Dropdown("Select Island", {
+    "Độ Cao 25",
+    "Độ Cao 50",
+    "Độ Cao 75",
+    "Độ Cao 100",
+    "Độ Cao 150",
+    "Độ Cao 200",
+    "Độ Cao 250",
+    "Độ Cao 300"
+}, function(value)
+    if value == "Độ Cao 25" then
+        sizeChange = Vector3.new(0, 25, 0)
+    elseif value == "Độ Cao 50" then
+        sizeChange = Vector3.new(0, 50, 0)
+    elseif value == "Độ Cao 75" then
+        sizeChange = Vector3.new(0, 75, 0)
+    elseif value == "Độ Cao 100" then
+        sizeChange = Vector3.new(0, 100, 0)
+    elseif value == "Độ Cao 150" then
+        sizeChange = Vector3.new(0, 150, 0)
+    elseif value == "Độ Cao 200" then
+        sizeChange = Vector3.new(0, 200, 0)
+    elseif value == "Độ Cao 250" then
+        sizeChange = Vector3.new(0, 250, 0)
+    elseif value == "Độ Cao 300" then
+        sizeChange = Vector3.new(0, 300, 0)
+    end
+    AdjustBoatSize()
 end)
 
 ca:Toggle("Trời Sáng   ( Lỗi )",_G.Troisangvcl,function(value)
