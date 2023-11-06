@@ -5078,57 +5078,85 @@ ca:Button("Bay",function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/lklklkl/main/bAY%202'))()
  end)
 
-ca:Slider("Tăng Tốc Tất Cả Thuyền",1,1000,123,function(value)
-local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
-local newMaxSpeed = value -- Giá trị tốc độ tối đa mới (tùy chỉnh theo nhu cầu)
+local boatsFolder = game.Workspace.Boats
+local sizeChange = Vector3.new(0, 0, 0)
 
--- Lặp qua tất cả các đối tượng con trong thư mục "Boats"
-for _, boat in pairs(boatsFolder:GetChildren()) do
-    if boat:IsA("Model") then
-        -- Đảm bảo rằng đối tượng là một mô hình (thuyền)
-        for _, child in pairs(boat:GetChildren()) do
-            if child:IsA("VehicleSeat") then
-                -- Đảm bảo rằng đối tượng con là một VehicleSeat
-                -- Đặt MaxSpeed của ghế trên phương tiện thành giá trị mới
-                child.MaxSpeed = newMaxSpeed
+-- Tạo một Dropdown cho tốc độ thuyền
+local boatSpeeds = {
+    "150 Tốc Độ",
+    "200 Tốc Độ",
+    "250 Tốc Độ",
+    "300 Tốc Độ",
+    "350 Tốc Độ",
+    "400 Tốc Độ",
+    "450 Tốc Độ",
+    "500 Tốc Độ",
+    "550 Tốc Độ",
+    "600 Tốc Độ"
+}
+
+local selectedSpeed = boatSpeeds[1] -- Chọn tốc độ mặc định
+
+-- Tạo một Dropdown cho độ cao của thuyền
+local boatHeights = {
+    "Độ Cao 25",
+    "Độ Cao 50",
+    "Độ Cao 75",
+    "Độ Cao 100",
+    "Độ Cao 150",
+    "Độ Cao 200",
+    "Độ Cao 250",
+    "Độ Cao 300"
+}
+
+local selectedHeight = boatHeights[1] -- Chọn độ cao mặc định
+
+local function AdjustBoatSettings()
+    local speedIndex = table.find(boatSpeeds, selectedSpeed)
+    local heightIndex = table.find(boatHeights, selectedHeight)
+
+    local newSpeed = 150 + 50 * (speedIndex - 1)
+    local newHeight = 25 + 25 * (heightIndex - 1)
+
+    for _, boat in pairs(boatsFolder:GetChildren()) do
+        if boat:IsA("Model") then
+            for _, child in pairs(boat:GetChildren()) do
+                if child:IsA("VehicleSeat") then
+                    child.MaxSpeed = newSpeed
+                    child.Size = Vector3.new(0, newHeight, 0)
+                end
             end
         end
     end
 end
+
+-- Tạo Dropdowns cho tốc độ và độ cao
+ca:Dropdown("Chọn Tốc Độ Thuyền", boatSpeeds, function(value)
+    selectedSpeed = value
+    AdjustBoatSettings()
+end)
+
+ca:Dropdown("Chọn Độ Cao Thuyền", boatHeights, function(value)
+    selectedHeight = value
+    AdjustBoatSettings()
 end)
 
 
 
-ca:Slider("Nâng Cao Ghế Ngồi",1,300,0,function(value)
-
-local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
-local sizeChange = Vector3.new(0,value, 0) -- Thay đổi kích thước (tăng kích thước Y thêm 325 đơn vị)
-
--- Lặp qua tất cả các đối tượng trong thư mục "Boats"
-for _, boat in pairs(boatsFolder:GetChildren()) do
-    if boat:IsA("Model") then
-        -- Đảm bảo rằng đối tượng là một mô hình (thuyền)
-        local vehicleSeat = boat:FindFirstChild("VehicleSeat") -- Tìm đối tượng "VehicleSeat" trong thuyền
-
-        if vehicleSeat then
-            -- Nếu tìm thấy "VehicleSeat", điều chỉnh kích thước của nó
-            vehicleSeat.Size = vehicleSeat.Size + sizeChange
-        end
-    end
-end
+ca:Toggle("Trời Sáng", _G.Troisangvcl, function(value)
+    _G.Troisangvcl = value
+    StopTween(_G.Troisangvcl)
 end)
 
-ca:Toggle("Trời Sáng   ( Lỗi )",_G.Troisangvcl,function(value)
-_G.Troisangvcl = value
- StopTween(_G.Troisangvcl)
-end)
 spawn(function()
- while wait() do
-if _G.Troisangvcl then 
-game.Lighting.ClockTime = 14
-end
-end
+    while true do
+        if _G.Troisangvcl then
+            game.Lighting.ClockTime = 14
+        end
+        wait(0.0000000000000000000000000000000000000000000000000000000001)  -- Chờ một lát trước khi kiểm tra lại
+    end
 end)
+
 
 
 ca:Toggle("Kill Cá ̉( Dễ Die )",_G.canho,function(value)
