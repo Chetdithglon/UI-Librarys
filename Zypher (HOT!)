@@ -7590,6 +7590,7 @@ end)
 local bossList = {
     "Saber Expert",
     "The Saw",
+    "The Saw",
     "Greybeard",
     "The Gorilla King",
     "Bobby",
@@ -7609,22 +7610,23 @@ local bossList = {
 local bossStatus = {}
 
 for i, bossName in ipairs(bossList) do
-    if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
-        bossStatus[i] = Main:Label("Status")
-        
-        spawn(function()
-            while wait() do
-                pcall(function()
-                    if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
-                        bossStatus[i]:Set("Status : " .. bossName .. " ✅ ")
-                    else
-                        bossStatus[i]:Set("Status : " .. bossName .. " ❌ ")
-                    end
-                end)
-            end
-        end)
-    end
-    end
+    bossStatus[i] = Main:Label("Status")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
+                    bossStatus[i]:Set("Status : " .. bossName .. " ✅ ")
+                else
+                    bossStatus[i]:Set("Status : " .. bossName .. " ❌ ")
+                end
+            end)
+        end
+    end)
+end
+
+
+
 
 
 
