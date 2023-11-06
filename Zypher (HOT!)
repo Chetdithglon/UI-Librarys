@@ -5078,23 +5078,10 @@ ca:Button("Bay",function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/lklklkl/main/bAY%202'))()
  end)
 
-  local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
-  -- Lặp qua tất cả các đối tượng con trong thư mục "Boats"
-for _, boat in pairs(boatsFolder:GetChildren()) do
-    if boat:IsA("Model") then
-        -- Đảm bảo rằng đối tượng là một mô hình (thuyền)
-        for _, child in pairs(boat:GetChildren()) do
-            if child:IsA("VehicleSeat") then
-                -- Đảm bảo rằng đối tượng con là một VehicleSeat
-                -- Đặt MaxSpeed của ghế trên phương tiện thành giá trị mới
-                child.MaxSpeed = newMaxSpeed
-            end
-        end
-    end
-end
+local boatsFolder = game.Workspace.Boats
+local sizeChange = Vector3.new(0, 0, 0)
 
-
-
+-- Tạo một bản ghi cho tốc độ và độ cao của thuyền cho mỗi Dropdown
 local boatSpeeds = {
     ["150 Tốc Độ"] = 150,
     ["200 Tốc Độ"] = 200,
@@ -5108,82 +5095,57 @@ local boatSpeeds = {
     ["600 Tốc Độ"] = 600
 }
 
-local boatsFolder = game.Workspace.Boats
+local boatHeights = {
+    ["Độ Cao 25"] = 25,
+    ["Độ Cao 50"] = 50,
+    ["Độ Cao 75"] = 75,
+    ["Độ Cao 100"] = 100,
+    ["Độ Cao 150"] = 150,
+    ["Độ Cao 200"] = 200,
+    ["Độ Cao 250"] = 250,
+    ["Độ Cao 300"] = 300
+}
 
-ca:Dropdown("Setting Tốc Độ Thuyền", boatSpeeds, function(value)
-    _G.Tocdothuyen = value
-end)
+local boatDropdowns = {
+    SpeedDropdown = boatSpeeds,
+    HeightDropdown = boatHeights
+}
 
-ca:Toggle("Chạy Setting", false, function(value)
-    _G.chaylenh = value
-    if _G.chaylenh == true then
-        repeat wait()
-            local newMaxSpeed = boatSpeeds[_G.Tocdothuyen]
-            for _, boat in pairs(boatsFolder:GetChildren()) do
-                if boat:IsA("Model") then
-                    for _, child in pairs(boat:GetChildren()) do
-                        if child:IsA("VehicleSeat") then
-                            child.MaxSpeed = newMaxSpeed
-                        end
-                    end
-                end
-            end
-        until not _G.Tocdothuyen
-    end
-    StopTween(_G.Tocdothuyen)
-end)
+local selectedDropdown = boatDropdowns.SpeedDropdown -- Chọn Dropdown mặc định
 
+local function AdjustBoatSettings()
+    local selectedSpeed = boatSpeeds[selectedDropdown]
+    local selectedHeight = boatHeights[selectedDropdown]
 
-
-
-
-
-
-
-
-local boatsFolder = game.Workspace.Boats
-local sizeChange = Vector3.new(0, 0, 0)
-
-local function AdjustBoatSize()
     for _, boat in pairs(boatsFolder:GetChildren()) do
         if boat:IsA("Model") then
-            local vehicleSeat = boat:FindFirstChild("VehicleSeat")
-            if vehicleSeat then
-                vehicleSeat.Size = vehicleSeat.Size + sizeChange
+            for _, child in pairs(boat:GetChildren()) do
+                if child:IsA("VehicleSeat") then
+                    child.MaxSpeed = selectedSpeed
+                    child.Size = child.Size + Vector3.new(0, selectedHeight, 0)
+                end
             end
         end
     end
 end
 
-ca:Dropdown("Select Island", {
-    "Độ Cao 25",
-    "Độ Cao 50",
-    "Độ Cao 75",
-    "Độ Cao 100",
-    "Độ Cao 150",
-    "Độ Cao 200",
-    "Độ Cao 250",
-    "Độ Cao 300"
-}, function(value)
-    if value == "Độ Cao 25" then
-        sizeChange = Vector3.new(0, 25, 0)
-    elseif value == "Độ Cao 50" then
-        sizeChange = Vector3.new(0, 50, 0)
-    elseif value == "Độ Cao 75" then
-        sizeChange = Vector3.new(0, 75, 0)
-    elseif value == "Độ Cao 100" then
-        sizeChange = Vector3.new(0, 100, 0)
-    elseif value == "Độ Cao 150" then
-        sizeChange = Vector3.new(0, 150, 0)
-    elseif value == "Độ Cao 200" then
-        sizeChange = Vector3.new(0, 200, 0)
-    elseif value == "Độ Cao 250" then
-        sizeChange = Vector3.new(0, 250, 0)
-    elseif value == "Độ Cao 300" then
-        sizeChange = Vector3.new(0, 300, 0)
-    end
-    AdjustBoatSize()
+-- Tạo Dropdowns cho tốc độ và độ cao
+ca:Dropdown("Chọn Tốc Độ Thuyền", boatSpeeds, function(value)
+    selectedDropdown = "SpeedDropdown"
 end)
+
+ca:Dropdown("Chọn Độ Cao Thuyền", boatHeights, function(value)
+    selectedDropdown = "HeightDropdown"
+end)
+
+-- Tạo nút bật để áp dụng cài đặt
+ca:Toggle("Chạy Setting", false, function(value)
+    if value == true then
+        AdjustBoatSettings()
+    end
+    StopTween(selectedDropdown)
+end)
+
 
 ca:Toggle("Trời Sáng   ( Lỗi )",_G.Troisangvcl,function(value)
 _G.Troisangvcl = value
