@@ -5094,6 +5094,7 @@ for _, boat in pairs(boatsFolder:GetChildren()) do
 end
 
 
+
  ca:Dropdown("Select Island", {
   "150",
   "200",
@@ -5112,7 +5113,17 @@ end
 
 
 
- local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
+
+
+
+
+Ca:Toggle("Chạy Setting",false,function(value)
+  _G.chaylenh = value
+  if _G.chaylenh == true then
+  repeat wait()
+  if _G.Tocdothuyen == "150" then
+  local newMaxSpeed = 150
+   local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
   -- Lặp qua tất cả các đối tượng con trong thư mục "Boats"
 for _, boat in pairs(boatsFolder:GetChildren()) do
     if boat:IsA("Model") then
@@ -5126,67 +5137,155 @@ for _, boat in pairs(boatsFolder:GetChildren()) do
         end
     end
 end
-
-
-
-Ca:Toggle("Chạy Setting",false,function(value)
-  _G.chaylenh = value
-  if _G.chaylenh == true then
-  repeat wait()
-  if _G.Tocdothuyen == "150" then
-  local newMaxSpeed = 150
   elseif _G.Tocdothuyen == "200" then
   local newMaxSpeed = 200
+   local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
+  -- Lặp qua tất cả các đối tượng con trong thư mục "Boats"
+for _, boat in pairs(boatsFolder:GetChildren()) do
+    if boat:IsA("Model") then
+        -- Đảm bảo rằng đối tượng là một mô hình (thuyền)
+        for _, child in pairs(boat:GetChildren()) do
+            if child:IsA("VehicleSeat") then
+                -- Đảm bảo rằng đối tượng con là một VehicleSeat
+                -- Đặt MaxSpeed của ghế trên phương tiện thành giá trị mới
+                child.MaxSpeed = newMaxSpeed
+            end
+        end
+    end
+end
   elseif _G.Tocdothuyen == "250" then
   local newMaxSpeed = 250
+   local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
+  -- Lặp qua tất cả các đối tượng con trong thư mục "Boats"
+for _, boat in pairs(boatsFolder:GetChildren()) do
+    if boat:IsA("Model") then
+        -- Đảm bảo rằng đối tượng là một mô hình (thuyền)
+        for _, child in pairs(boat:GetChildren()) do
+            if child:IsA("VehicleSeat") then
+                -- Đảm bảo rằng đối tượng con là một VehicleSeat
+                -- Đặt MaxSpeed của ghế trên phương tiện thành giá trị mới
+                child.MaxSpeed = newMaxSpeed
+            end
+        end
+    end
+end
   elseif _G.Tocdothuyen == "300" then
   local newMaxSpeed = 300
+   local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
+  -- Lặp qua tất cả các đối tượng con trong thư mục "Boats"
+for _, boat in pairs(boatsFolder:GetChildren()) do
+    if boat:IsA("Model") then
+        -- Đảm bảo rằng đối tượng là một mô hình (thuyền)
+        for _, child in pairs(boat:GetChildren()) do
+            if child:IsA("VehicleSeat") then
+                -- Đảm bảo rằng đối tượng con là một VehicleSeat
+                -- Đặt MaxSpeed của ghế trên phương tiện thành giá trị mới
+                child.MaxSpeed = newMaxSpeed
+            end
+        end
+    end
+end
   elseif _G.Tocdothuyen == "350" then
   local newMaxSpeed = 350
+   local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
+  -- Lặp qua tất cả các đối tượng con trong thư mục "Boats"
+for _, boat in pairs(boatsFolder:GetChildren()) do
+    if boat:IsA("Model") then
+        -- Đảm bảo rằng đối tượng là một mô hình (thuyền)
+        for _, child in pairs(boat:GetChildren()) do
+            if child:IsA("VehicleSeat") then
+                -- Đảm bảo rằng đối tượng con là một VehicleSeat
+                -- Đặt MaxSpeed của ghế trên phương tiện thành giá trị mới
+                child.MaxSpeed = newMaxSpeed
+            end
+        end
+    end
+end
   elseif _G.Tocdothuyen == "400" then
   local newMaxSpeed = 400
+   local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
+  -- Lặp qua tất cả các đối tượng con trong thư mục "Boats"
+for _, boat in pairs(boatsFolder:GetChildren()) do
+    if boat:IsA("Model") then
+        -- Đảm bảo rằng đối tượng là một mô hình (thuyền)
+        for _, child in pairs(boat:GetChildren()) do
+            if child:IsA("VehicleSeat") then
+                -- Đảm bảo rằng đối tượng con là một VehicleSeat
+                -- Đặt MaxSpeed của ghế trên phương tiện thành giá trị mới
+                child.MaxSpeed = newMaxSpeed
+            end
+        end
+    end
+end
   elseif _G.Tocdothuyen == "450" then
   local newMaxSpeed = 450
+   local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
+  -- Lặp qua tất cả các đối tượng con trong thư mục "Boats"
+for _, boat in pairs(boatsFolder:GetChildren()) do
+    if boat:IsA("Model") then
+        -- Đảm bảo rằng đối tượng là một mô hình (thuyền)
+        for _, child in pairs(boat:GetChildren()) do
+            if child:IsA("VehicleSeat") then
+                -- Đảm bảo rằng đối tượng con là một VehicleSeat
+                -- Đặt MaxSpeed của ghế trên phương tiện thành giá trị mới
+                child.MaxSpeed = newMaxSpeed
+            end
+        end
+    end
+end
   elseif _G.Tocdothuyen == "500" then
   local newMaxSpeed = 500
+   local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
+  -- Lặp qua tất cả các đối tượng con trong thư mục "Boats"
+for _, boat in pairs(boatsFolder:GetChildren()) do
+    if boat:IsA("Model") then
+        -- Đảm bảo rằng đối tượng là một mô hình (thuyền)
+        for _, child in pairs(boat:GetChildren()) do
+            if child:IsA("VehicleSeat") then
+                -- Đảm bảo rằng đối tượng con là một VehicleSeat
+                -- Đặt MaxSpeed của ghế trên phương tiện thành giá trị mới
+                child.MaxSpeed = newMaxSpeed
+            end
+        end
+    end
+end
   elseif _G.Tocdothuyen == "550" then
   local newMaxSpeed = 550
+   local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
+  -- Lặp qua tất cả các đối tượng con trong thư mục "Boats"
+for _, boat in pairs(boatsFolder:GetChildren()) do
+    if boat:IsA("Model") then
+        -- Đảm bảo rằng đối tượng là một mô hình (thuyền)
+        for _, child in pairs(boat:GetChildren()) do
+            if child:IsA("VehicleSeat") then
+                -- Đảm bảo rằng đối tượng con là một VehicleSeat
+                -- Đặt MaxSpeed của ghế trên phương tiện thành giá trị mới
+                child.MaxSpeed = newMaxSpeed
+            end
+        end
+    end
+end
   elseif _G.Tocdothuyen == "600" then
   local newMaxSpeed = 600
+   local boatsFolder = game.Workspace.Boats -- Thư mục "Boats" trong không gian làm việc
+  -- Lặp qua tất cả các đối tượng con trong thư mục "Boats"
+for _, boat in pairs(boatsFolder:GetChildren()) do
+    if boat:IsA("Model") then
+        -- Đảm bảo rằng đối tượng là một mô hình (thuyền)
+        for _, child in pairs(boat:GetChildren()) do
+            if child:IsA("VehicleSeat") then
+                -- Đảm bảo rằng đối tượng con là một VehicleSeat
+                -- Đặt MaxSpeed của ghế trên phương tiện thành giá trị mới
+                child.MaxSpeed = newMaxSpeed
+            end
+        end
+    end
+end
   end
   until not _G.Tocdothuyen
   end
   StopTween(_G.Tocdothuyen)
  end)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
