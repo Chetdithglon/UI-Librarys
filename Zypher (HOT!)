@@ -7587,37 +7587,44 @@ end)
 end)
 
 
-local bossLabels = {
-    Main:Label("Saber Expert"),
-    Main:Label("The Saw"),
-    Main:Label("Greybeard"),
-    Main:Label("The Gorilla King"),
-    Main:Label("Bobby"),
-    Main:Label("Yeti"),
-    Main:Label("Mob Leader"),
-    Main:Label("Vice Admiral"),
-    Main:Label("Warden"),
-    Main:Label("Chief Warden"),
-    Main:Label("Swan"),
-    Main:Label("Magma Admiral"),
-    Main:Label("Fishman Lord"),
-    Main:Label("Wysper"),
-    Main:Label("Thunder God"),
-    Main:Label("Cyborg"),
+local bossList = {
+    "Saber Expert",
+    "The Saw",
+    "Greybeard",
+    "The Gorilla King",
+    "Bobby",
+    "Yeti",
+    "Mob Leader",
+    "Vice Admiral",
+    "Warden",
+    "Chief Warden",
+    "Swan",
+    "Magma Admiral",
+    "Fishman Lord",
+    "Wysper",
+    "Thunder God",
+    "Cyborg"
 }
 
-for i, label in ipairs(bossLabels) do
-    spawn(function()
-        while wait() do
-            pcall(function()
-                local objectName = label:GetText()
-                local object = game:GetService("ReplicatedStorage"):FindFirstChild(objectName)
-                local status = (object and "✅") or "❌"
-                label:Set("Status : " .. objectName .. " " .. status)
-            end)
-        end
-    end)
-end
+local bossStatus = {}
+
+for i, bossName in ipairs(bossList) do
+    if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
+        bossStatus[i] = Main:Label("Status")
+        
+        spawn(function()
+            while wait() do
+                pcall(function()
+                    if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
+                        bossStatus[i]:Set("Status : " .. bossName .. " ✅ ")
+                    else
+                        bossStatus[i]:Set("Status : " .. bossName .. " ❌ ")
+                    end
+                end)
+            end
+        end)
+    end
+    end
 
 
 
