@@ -5130,6 +5130,7 @@ end
 
 Ca:Toggle("Chạy Setting",false,function(value)
   _G.chaylenh = value
+  end)
   if _G.chaylenh == true then
   repeat wait()
   if _G.Tocdothuyen == "150" then
@@ -5156,7 +5157,6 @@ Ca:Toggle("Chạy Setting",false,function(value)
   until not _G.chaylenh
   end
   StopTween(_G.chaylenh)
- end)
 
 
 
