@@ -7616,9 +7616,9 @@ for i, bossName in ipairs(bossList) do
         while wait() do
             pcall(function()
                 if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
-                    bossStatus[i]:Set("Đã Có Boss : " .. bossName .. " ✅ ")
+                    bossStatus[i]:Set("Spawn : " .. bossName .. " ✅ ")
                 else
-                    bossStatus[i]:Set("Không Có Boss : " .. bossName .. " ❌ ")
+                    bossStatus[i]:Set("Spawn : " .. bossName .. " ❌ ")
                 end
             end)
         end
@@ -7650,9 +7650,9 @@ for i, bossName in ipairs(bossList) do
         while wait() do
             pcall(function()
                 if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
-                    bossStatus[i]:Set("Đã Có Boss : " .. bossName .. " ✅ ")
+                    bossStatus[i]:Set("Spawn : " .. bossName .. " ✅ ")
                 else
-                    bossStatus[i]:Set("Không Có Boss : " .. bossName .. " ❌ ")
+                    bossStatus[i]:Set("Spawn : " .. bossName .. " ❌ ")
                 end
             end)
         end
@@ -7689,9 +7689,9 @@ for i, bossName in ipairs(bossList) do
         while wait() do
             pcall(function()
                 if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
-                    bossStatus[i]:Set("Đã Có Boss : " .. bossName .. " ✅ ")
+                    bossStatus[i]:Set("Spawn : " .. bossName .. " ✅ ")
                 else
-                    bossStatus[i]:Set("Không Có Boss : " .. bossName .. " ❌ ")
+                    bossStatus[i]:Set("Spawn : " .. bossName .. " ❌ ")
                 end
             end)
         end
