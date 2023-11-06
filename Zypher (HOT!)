@@ -7609,25 +7609,35 @@ local bossList = {
 
 local bossStatus = {}
 
+local hasBoss = false
 for i, bossName in ipairs(bossList) do
-    bossStatus[i] = Main:Label("Status")
-    
-    spawn(function()
-        while wait() do
-            pcall(function()
-                if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
-                    bossStatus[i]:Set("Status : " .. bossName .. " ✔ ")
-                else
-                    bossStatus[i]:Set("Status : " .. bossName .. " ✖")
-                end
-            end)
-        end
-    end)
+    if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
+        hasBoss = true
+        bossStatus[i] = Main:Label("Status")
+        
+        spawn(function()
+            while wait() do
+                pcall(function()
+                    if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
+                        bossStatus[i]:Set("Status : " .. bossName .. " ✅ ")
+                    else
+                        bossStatus[i]:Set("Status : " .. bossName .. " ❌ ")
+                    end
+                end)
+            end
+        end)
+    end
 end
 
-local BossName = Main:Dropdown("Chọn Boss Farm", bossList, function(value)
-    _G.Select_Boss = value
-end)
+local BossName
+if hasBoss then
+    BossName = Main:Dropdown("Chọn Boss Farm", bossList, function(value)
+        _G.Select_Boss = value
+    end)
+else
+    BossName = Main:Label("Không có Boss")
+end
+
 
  if World3 then
 
