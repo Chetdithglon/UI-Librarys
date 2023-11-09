@@ -6341,27 +6341,23 @@ local Boss = {}
         end
     end
     
-    local BossName = Main:Dropdown("Chọn Boss Farm",Boss,function(value)
-       _G.Select_Boss = value
-    end)
-    
-    Main:Button("Làm Mới Boss",function()
-        BossName:Clear()
-            for i, v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
-            if string.find(v.Name, "Boss") then
-                BossName:Add(v.Name) 
-            end
-        end
-    end)
-
-Main:Toggle("Farm Boss Đã Chọn",_G.Auto_Farm_Boss,function(value)
- _G.Auto_Farm_Boss = value
- _G.click = value
- end)
-
-Main:Toggle("Nhận Nhiệm Vụ Boss",true,function(value)
- _G.Auto_Quest_Boss = value
+    local BossName = Main:Dropdown("Chọn Boss Farm",{},function(value)
+    _G.Select_Boss = value
 end)
+
+Main:Button("Làm Mới Boss",function()
+    BossName:Clear()
+    local bossList = {}  -- Tạo một table để lưu trữ tên boss
+    for i, v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
+        if string.find(v.Name, "Boss") then
+            table.insert(bossList, v.Name)  -- Thêm tên boss vào table
+        end
+    end
+    for i, bossName in ipairs(bossList) do
+        BossName:Add(bossName)  -- Thêm tên boss vào Dropdown
+    end
+end)
+
 
 spawn(function()
 	while wait() do
