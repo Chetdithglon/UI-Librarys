@@ -7806,17 +7806,7 @@ end)
 	end)
 	
 end
-if World3 or World2 then
-Weapon:Seperator(" Haki + Sea Beasts ")
-Weapon:Toggle("Tự Động Mua Haki Màu",_G.Auto_Buy_Enchancement,function(value)
- _G.Auto_Buy_Enchancement = value
-StopTween(_G.Auto_Buy_Enchancement)
-end)
-Weapon:Toggle("Tự Động Đánh Sea Beasts",_G.SeaBeasts1,function(value)
- _G.SeaBeasts1 = value
- StopTween(_G.SeaBeasts1)
-end)
-end
+
 if World1 then
 
 Weapon:Seperator(" Auto Saber ")
@@ -8087,13 +8077,6 @@ Weapon:Toggle("Auto Saber",_G.AutoSaber,function(value)
 elseif World2 then
 
 
-	Weapon:Toggle("Auto Đánh Boss + Đổi tộc Qủy",_G.mudautr,function(value)
- _G.tocquy = value
- _G.click = value
- _G.FastAttack = value
- _G.FastAttack1 = value
- StopTween(_G.tocquy)
-end)
 
 
 spawn(function()
@@ -8131,7 +8114,23 @@ spawn(function()
 			
 			end
 			end
-			end)
+end)
+		
+		
+		
+if World3 or World2 then
+Weapon:Seperator(" Haki + Sea Beasts ")
+Weapon:Toggle("Tự Động Mua Haki Màu",_G.Auto_Buy_Enchancement,function(value)
+ _G.Auto_Buy_Enchancement = value
+StopTween(_G.Auto_Buy_Enchancement)
+end)
+Weapon:Toggle("Tự Động Đánh Sea Beasts",_G.SeaBeasts1,function(value)
+ _G.SeaBeasts1 = value
+ StopTween(_G.SeaBeasts1)
+end)
+end		
+		
+Weapon:Seperator(" Haki + Sea Beasts ")		
 
 	 Weapon:Toggle("Mũ Đấu Trường + Tộc V2",_G.mudautr,function(value)
  _G.mudautr = value
@@ -8425,11 +8424,14 @@ Weapon:Toggle("Tự Động Mua Kiếm Legendary",_G.AutoBuyLegendarySword,fu
 		end
 	end)
 
-Weapon:Seperator(" Haki Màu ")
+Weapon:Seperator(" Ghoul")
 
-	Weapon:Toggle("Tự Động Mua Haki Màu",_G.Auto_Buy_Enchancement,function(value)
- _G.Auto_Buy_Enchancement = value
-StopTween(_G.Auto_Buy_Enchancement)
+Weapon:Toggle("Auto Đánh Boss + Đổi tộc Qủy",_G.mudautr,function(value)
+ _G.tocquy = value
+ _G.click = value
+ _G.FastAttack = value
+ _G.FastAttack1 = value
+ StopTween(_G.tocquy)
 end)
 	
 	
@@ -12375,6 +12377,17 @@ local args = {
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 
  end)
+ 
+ 
+ Shop:Button("Đổi Tộc Qủy",function()
+local args = {
+                    [1] = "ZQuestProgress"
+                     }
+
+                  game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+
+ end)
+ 
 
  Shop:Button("Mua Black Leg",function()
   game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBlackLeg")
