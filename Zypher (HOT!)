@@ -6327,159 +6327,6 @@ end)
 --	end)
 
 
- 
-Main:Seperator("Farm Boss ")
-
-local bossStatus1, bossStatus2, bossStatus3 = {}, {}, {}
-
-if World1 then
-    local bossList = {
-        "Saber Expert",
-        "The Saw",
-        "The Saw",
-        "Greybeard",
-        "The Gorilla King",
-        "Bobby",
-        "Yeti",
-        "Mob Leader",
-        "Vice Admiral",
-        "Warden",
-        "Chief Warden",
-        "Swan",
-        "Magma Admiral",
-        "Fishman Lord",
-        "Wysper",
-        "Thunder God",
-        "Cyborg"
-    }
-
-    for i, bossName in ipairs(bossList) do
-        bossStatus1[i] = Main:Label("Status")
-
-        spawn(function()
-            while wait() do
-                pcall(function()
-                    local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
-                    if boss then
-                        bossStatus1[i]:Set("Spawn: " .. bossName .. " ✅ ")
-                    else
-                        bossStatus1[i]:Set("Spawn: " .. bossName .. " ❌ ")
-                    end
-                end)
-            end
-        end)
-    end
-end
-
-if World2 then
-    local bossList = {
-        "Diamond",
-        "Jeremy",
-        "Fajita",
-        "Don Swan",
-        "Smoke Admiral",
-        "Cursed Captain",
-        "Darkbeard",
-        "Order",
-        "Awakened Ice Admiral",
-        "Tide Keeper"
-    }
-
-    for i, bossName in ipairs(bossList) do
-        bossStatus2[i] = Main:Label("Status")
-
-        spawn(function()
-            while wait() do
-                pcall(function()
-                    local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
-                    if boss then
-                        bossStatus2[i]:Set("Spawn : " .. bossName .. " ✅ ")
-                    else
-                        bossStatus2[i]:Set("Spawn : " .. bossName .. " ❌ ")
-                    end
-                end)
-            end
-        end)
-    end
-end
-
-if World3 then
-    local bossList = {
-        "Stone",
-        "Island Empress",
-        "Kilo Admiral",
-        "Captain Elephant",
-        "Beautiful Pirate",
-        "Cake Queen",
-        "rip_indra True Form",
-        "Longma",
-        "Soul Reaper"
-    }
-
-    for i, bossName in ipairs(bossList) do
-        bossStatus3[i] = Main:Label("Status")
-
-        spawn(function()
-            while wait() do
-                pcall(function()
-                    local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
-                    if boss then
-                        bossStatus3[i]:Set("Spawn: " .. bossName .. " ✅ ")
-                    else
-                        bossStatus3[i]:Set("Spawn: " .. bossName .. " ❌ ")
-                    end
-                end)
-            end
-        end)
-    end
-end
-
-local BossName
-Main:Dropdown("Chọn Boss Farm", {}, function(value)
-    _G.Select_Boss = value
-end)
-
-Main:Button("Làm Mới Boss", function()
-    if BossName then
-        BossName:Clear()
-        local existingBosses = {}
-
-        for _, bossName in ipairs(bossList) do
-            local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
-            if boss then
-                BossName:Add(bossName)
-            end
-        end
-    else
-        local existingBosses = {}
-
-        for _, bossName in ipairs(bossList) do
-            if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
-                table.insert(existingBosses, bossName)
-            end
-        end
-
-        if #existingBosses > 0 then
-            BossName = Main:Dropdown("Chọn Boss Farm", existingBosses, function(value)
-                _G.Select_Boss = value
-            end)
-        end
-    end
-end)
-
-
-
-
-
-
-Main:Toggle("Farm Boss Đã Chọn",_G.Auto_Farm_Boss,function(value)
- _G.Auto_Farm_Boss = value
- _G.click = value
- end)
-
-Main:Toggle("Nhận Nhiệm Vụ Boss",true,function(value)
- _G.Auto_Quest_Boss = value
-end)
 
 spawn(function()
 	while wait() do
@@ -7699,11 +7546,9 @@ end
 end
 end)
 end)
-
 if World1 then
 local bossList = {
     "Saber Expert",
-    "The Saw",
     "The Saw",
     "Greybeard",
     "The Gorilla King",
@@ -7723,22 +7568,40 @@ local bossList = {
 
 local bossStatus = {}
 
+-- Tạo label cho từng boss và theo dõi trạng thái spawn
 for i, bossName in ipairs(bossList) do
     bossStatus[i] = Main:Label("Status")
-    
+
     spawn(function()
         while wait() do
             pcall(function()
-                if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
-                    bossStatus[i]:Set("Spawn : " .. bossName .. " ✅ ")
+                local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
+                if boss then
+                    bossStatus[i]:Set("Spawn: " .. bossName .. " ✅ ")
                 else
-                    bossStatus[i]:Set("Spawn : " .. bossName .. " ❌ ")
+                    bossStatus[i]:Set("Spawn: " .. bossName .. " ❌ ")
                 end
             end)
         end
     end)
 end
 
+local BossName = Main:Dropdown("Chọn Boss Farm", {}, function(value)
+    _G.Select_Boss = value
+end)
+
+local refreshButton = Main:Button("Làm Mới Boss", function()
+    BossName:Clear()
+    local existingBosses = {}
+
+    -- Kiểm tra xem boss nào có sẵn và thêm vào danh sách
+    for _, bossName in ipairs(bossList) do
+        local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
+        if boss then
+            BossName:Add(bossName)
+        end
+    end
+end)
 end
 
 if World2 then
@@ -7757,29 +7620,41 @@ local bossList = {
 
 local bossStatus = {}
 
+-- Tạo label cho từng boss và theo dõi trạng thái spawn
 for i, bossName in ipairs(bossList) do
     bossStatus[i] = Main:Label("Status")
-    
+
     spawn(function()
         while wait() do
             pcall(function()
-                if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
-                    bossStatus[i]:Set("Spawn : " .. bossName .. " ✅ ")
+                local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
+                if boss then
+                    bossStatus[i]:Set("Spawn: " .. bossName .. " ✅ ")
                 else
-                    bossStatus[i]:Set("Spawn : " .. bossName .. " ❌ ")
+                    bossStatus[i]:Set("Spawn: " .. bossName .. " ❌ ")
                 end
             end)
         end
     end)
 end
+
+local BossName = Main:Dropdown("Chọn Boss Farm", {}, function(value)
+    _G.Select_Boss = value
+end)
+
+local refreshButton = Main:Button("Làm Mới Boss", function()
+    BossName:Clear()
+    local existingBosses = {}
+
+    -- Kiểm tra xem boss nào có sẵn và thêm vào danh sách
+    for _, bossName in ipairs(bossList) do
+        local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
+        if boss then
+            BossName:Add(bossName)
+        end
+    end
+end)
 end
-
-
-
-
-
-
-
 
 if World3 then
 local bossList = {
@@ -7796,26 +7671,51 @@ local bossList = {
 
 local bossStatus = {}
 
+-- Tạo label cho từng boss và theo dõi trạng thái spawn
 for i, bossName in ipairs(bossList) do
     bossStatus[i] = Main:Label("Status")
-    
+
     spawn(function()
         while wait() do
             pcall(function()
-                if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
-                    bossStatus[i]:Set("Spawn : " .. bossName .. " ✅ ")
+                local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
+                if boss then
+                    bossStatus[i]:Set("Spawn: " .. bossName .. " ✅ ")
                 else
-                    bossStatus[i]:Set("Spawn : " .. bossName .. " ❌ ")
+                    bossStatus[i]:Set("Spawn: " .. bossName .. " ❌ ")
                 end
             end)
         end
     end)
 end
+
+local BossName = Main:Dropdown("Chọn Boss Farm", {}, function(value)
+    _G.Select_Boss = value
+end)
+
+local refreshButton = Main:Button("Làm Mới Boss", function()
+    BossName:Clear()
+    local existingBosses = {}
+
+    -- Kiểm tra xem boss nào có sẵn và thêm vào danh sách
+    for _, bossName in ipairs(bossList) do
+        local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
+        if boss then
+            BossName:Add(bossName)
+        end
+    end
+end)
 end
 
 
+Main:Toggle("Farm Boss Đã Chọn",_G.Auto_Farm_Boss,function(value)
+ _G.Auto_Farm_Boss = value
+ _G.click = value
+ end)
 
-
+Main:Toggle("Nhận Nhiệm Vụ Boss",true,function(value)
+ _G.Auto_Quest_Boss = value
+end)
 
 
  
