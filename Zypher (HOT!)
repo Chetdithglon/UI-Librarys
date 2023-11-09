@@ -7546,6 +7546,9 @@ end
 end
 end)
 end)
+
+
+Main:Seperator("Farm Boss ")
 if World1 then
 local bossList = {
     "Saber Expert",
