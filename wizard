@@ -7603,22 +7603,6 @@ end)
 end
 
 if World2 then
-local BossName = Main:Dropdown("Chọn Boss Farm", {}, function(value)
-    _G.Select_Boss = value
-end)
-
-local refreshButton = Main:Button("Làm Mới Boss", function()
-    BossName:Clear()
-    local existingBosses = {}
-
-    -- Kiểm tra xem boss nào có sẵn và thêm vào danh sách
-    for _, bossName in ipairs(bossList) do
-        local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
-        if boss then
-            BossName:Add(bossName)
-        end
-    end
-end)
 local bossList = {
     "Diamond",
     "Jeremy",
@@ -7629,6 +7613,7 @@ local bossList = {
     "Darkbeard",
     "Order",
     "Awakened Ice Admiral",
+    "Cursed Captain",
     "Tide Keeper"
 }
 
@@ -7651,7 +7636,25 @@ for i, bossName in ipairs(bossList) do
         end
     end)
 end
+local BossName = Main:Dropdown("Chọn Boss Farm", {}, function(value)
+    _G.Select_Boss = value
+    _G.FastAttack1 = value
+     _G.FastAttack = value
+     _G.click = value
+end)
 
+local refreshButton = Main:Button("Làm Mới Boss", function()
+    BossName:Clear()
+    local existingBosses = {}
+
+    -- Kiểm tra xem boss nào có sẵn và thêm vào danh sách
+    for _, bossName in ipairs(bossList) do
+        local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
+        if boss then
+            BossName:Add(bossName)
+        end
+    end
+end)
 end
 
 
