@@ -6362,38 +6362,23 @@ for i, bossName in ipairs(bossList) do
     end)
 end
 
-local BossName
+local BossName = Main:Dropdown("Chọn Boss Farm", {}, function(value)
+    _G.Select_Boss = value
+end)
 
-Main:Button("Làm Mới Boss", function()
-    if BossName then
-        BossName:Clear()
-        local existingBosses = {}
+local refreshButton = Main:Button("Làm Mới Boss", function()
+    BossName:Clear()
+    local existingBosses = {}
 
-        -- Kiểm tra xem boss nào có sẵn và thêm vào danh sách
-        for _, bossName in ipairs(bossList) do
-            local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
-            if boss then
-                BossName:Add(bossName)
-            end
-        end
-    else
-        local existingBosses = {}
-
-        -- Kiểm tra xem boss nào có sẵn và thêm vào danh sách
-        for _, bossName in ipairs(bossList) do
-            if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
-                table.insert(existingBosses, bossName)
-            end
-        end
-
-        -- Nếu có boss nào có sẵn thì tạo Dropdown
-        if #existingBosses > 0 then
-            BossName = Main:Dropdown("Chọn Boss Farm", existingBosses, function(value)
-                _G.Select_Boss = value
-            end)
+    -- Kiểm tra xem boss nào có sẵn và thêm vào danh sách
+    for _, bossName in ipairs(bossList) do
+        local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
+        if boss then
+            BossName:Add(bossName)
         end
     end
 end)
+
 
 
 
@@ -6490,10 +6475,6 @@ spawn(function()
 	end
 end)
 
-Main:Toggle("Càng Quét Tất Cả Boss ",_G.Auto_Farm_All_Boss,function(value)
- _G.Auto_Farm_All_Boss = value
-StopTween(_G.Auto_Farm_All_Boss)
-end)
 
 spawn(function()
 	while wait() do
