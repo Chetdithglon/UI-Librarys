@@ -323,7 +323,56 @@ coroutine.wrap(YTZCAJC_fake_script)()
 
 
 
-       
+
+
+
+
+
+
+
+ repeat wait() until game.Players
+    repeat wait() until game.Players.LocalPlayer
+    repeat wait() until game.ReplicatedStorage
+    repeat wait() until game.ReplicatedStorage:FindFirstChild("Remotes");
+    repeat wait() until game.Players.LocalPlayer:FindFirstChild("PlayerGui");
+    repeat wait() until game.Players.LocalPlayer.PlayerGui:FindFirstChild("Main");
+    repeat wait() until game:GetService("Players")
+    repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("Energy")
+    
+    wait(1)
+    
+    if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
+    
+    if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
+        repeat wait()
+            if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
+                if _G.Team == "Pirate" then
+                    for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.Activated)) do                                                                                                
+                        v.Function()
+                    end
+                elseif _G.Team == "Marine" then
+                    for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.ViewportFrame.TextButton.Activated)) do                                                                                                
+                        v.Function()
+                    end
+                else
+                    for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.Activated)) do                                                                                                
+                        v.Function()
+                    end
+                end
+            end
+        until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
+    end
+
+
+
+
+
+
+
+
+
+                
+                
                 
 
                 
@@ -7528,7 +7577,7 @@ for i, bossName in ipairs(bossList) do
                 if boss then
                     bossStatus[i]:Set("Spawn: " .. bossName .. " ✅ ")
                 else
-                    bossStatus[i]:Set("Spawn: " .. bossName .. " 🙂 ")
+                    bossStatus[i]:Set("Spawn: " .. bossName .. " ☹ ")
                 end
             end)
         end
@@ -7554,6 +7603,22 @@ end)
 end
 
 if World2 then
+local BossName = Main:Dropdown("Chọn Boss Farm", {}, function(value)
+    _G.Select_Boss = value
+end)
+
+local refreshButton = Main:Button("Làm Mới Boss", function()
+    BossName:Clear()
+    local existingBosses = {}
+
+    -- Kiểm tra xem boss nào có sẵn và thêm vào danh sách
+    for _, bossName in ipairs(bossList) do
+        local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
+        if boss then
+            BossName:Add(bossName)
+        end
+    end
+end)
 local bossList = {
     "Diamond",
     "Jeremy",
@@ -7579,29 +7644,14 @@ for i, bossName in ipairs(bossList) do
                 local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
                 if boss then
                     bossStatus[i]:Set("Spawn: " .. bossName .. " ✅ ")
-                    else 
-                    bossStatus[i]:Set("Spawn: " .. bossName .. " 🙂 ")
+                else
+                    bossStatus[i]:Set("Spawn: " .. bossName .. " ☹ ")
                 end
             end)
         end
     end)
 end
-local BossName = Main:Dropdown("Chọn Boss Farm", {}, function(value)
-    _G.Select_Boss = value
-end)
 
-local refreshButton = Main:Button("Làm Mới Boss", function()
-    BossName:Clear()
-    local existingBosses = {}
-
-    -- Kiểm tra xem boss nào có sẵn và thêm vào danh sách
-    for _, bossName in ipairs(bossList) do
-        local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
-        if boss then
-            BossName:Add(bossName)
-        end
-    end
-end)
 end
 
 
@@ -7631,7 +7681,7 @@ for i, bossName in ipairs(bossList) do
                 if boss then
                     bossStatus[i]:Set("Spawn: " .. bossName .. " ✅ ")
                 else
-                    bossStatus[i]:Set("Spawn: " .. bossName .. " 🙂 ")
+                    bossStatus[i]:Set("Spawn: " .. bossName .. " ☹ ")
                 end
             end)
         end
@@ -7753,20 +7803,18 @@ end)
 		end
 	end)
 	
-
-
-Weapon:Seperator("Buy Haki + Sea Beast")
-	Weapon:Toggle("Tự Động Mua Haki Màu",_G.Auto_Buy_Enchancement,function(value)
+end
+if World3 or World2 then
+Weapon:Seperator(" Haki + Sea Beasts ")
+Weapon:Toggle("Tự Động Mua Haki Màu",_G.Auto_Buy_Enchancement,function(value)
  _G.Auto_Buy_Enchancement = value
 StopTween(_G.Auto_Buy_Enchancement)
 end)
-
 Weapon:Toggle("Tự Động Đánh Sea Beasts",_G.SeaBeasts1,function(value)
  _G.SeaBeasts1 = value
  StopTween(_G.SeaBeasts1)
 end)
-
-
+end
 if World1 then
 
 Weapon:Seperator(" Auto Saber ")
@@ -8338,7 +8386,7 @@ Weapon:Seperator(" Haki Màu ")
 StopTween(_G.Auto_Buy_Enchancement)
 end)
 	
-
+	
 	spawn(function()
 		while wait() do
 			if _G.Auto_Buy_Enchancement then
@@ -10855,54 +10903,8 @@ Teleport:Seperator(" WORLD ")
 
 
 
-Teleport:Seperator(" Server ")
-Misc:Button("Vô Lại Sever",function()
- local ts = game:GetService("TeleportService")
-		local p = game:GetService("Players").LocalPlayer
-		ts:Teleport(game.PlaceId, p)
-end)
 
-Misc:Button("Đổi Sever",function()
- hop()
-end)
-    Misc:Button("Vô Sever ít Người",function()
-        local maxplayers, gamelink, goodserver, data_table = math.huge, "https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100"
-		if not _G.FailedServerID then _G.FailedServerID = {} end
 
-		local function serversearch()
-			data_table = game:GetService"HttpService":JSONDecode(game:HttpGetAsync(gamelink))
-			for _, v in pairs(data_table.data) do
-				pcall(function()
-					if type(v) == "table" and v.id and v.playing and tonumber(maxplayers) > tonumber(v.playing) and not table.find(_G.FailedServerID, v.id) then
-						maxplayers = v.playing
-						goodserver = v.id
-					end
-				end)
-			end
-		end
-
-		function getservers()
-			pcall(serversearch)
-			for i, v in pairs(data_table) do
-				if i == "nextPageCursor" then
-					if gamelink:find"&cursor=" then
-						local a = gamelink:find"&cursor="
-						local b = gamelink:sub(a)
-						gamelink = gamelink:gsub(b, "")
-					end
-					gamelink = gamelink .. "&cursor=" .. v
-					pcall(getservers)
-				end
-			end
-		end
-
-		pcall(getservers)
-		wait()
-		if goodserver == game.JobId or maxplayers == #game:GetService"Players":GetChildren() - 1 then
-		end
-		table.insert(_G.FailedServerID, goodserver)
-		game:GetService"TeleportService":TeleportToPlaceInstance(game.PlaceId, goodserver)
-    end)
 
 
 
@@ -12351,7 +12353,53 @@ Misc:Button("Join Marines Team",function()
 end)
 
 
+Misc:Button("Rejoin",function()
+ local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
+		ts:Teleport(game.PlaceId, p)
+end)
 
+Misc:Button("Sever Hop",function()
+ hop()
+end)
+    Misc:Button("Hop To Lower Player",function()
+        local maxplayers, gamelink, goodserver, data_table = math.huge, "https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100"
+		if not _G.FailedServerID then _G.FailedServerID = {} end
+
+		local function serversearch()
+			data_table = game:GetService"HttpService":JSONDecode(game:HttpGetAsync(gamelink))
+			for _, v in pairs(data_table.data) do
+				pcall(function()
+					if type(v) == "table" and v.id and v.playing and tonumber(maxplayers) > tonumber(v.playing) and not table.find(_G.FailedServerID, v.id) then
+						maxplayers = v.playing
+						goodserver = v.id
+					end
+				end)
+			end
+		end
+
+		function getservers()
+			pcall(serversearch)
+			for i, v in pairs(data_table) do
+				if i == "nextPageCursor" then
+					if gamelink:find"&cursor=" then
+						local a = gamelink:find"&cursor="
+						local b = gamelink:sub(a)
+						gamelink = gamelink:gsub(b, "")
+					end
+					gamelink = gamelink .. "&cursor=" .. v
+					pcall(getservers)
+				end
+			end
+		end
+
+		pcall(getservers)
+		wait()
+		if goodserver == game.JobId or maxplayers == #game:GetService"Players":GetChildren() - 1 then
+		end
+		table.insert(_G.FailedServerID, goodserver)
+		game:GetService"TeleportService":TeleportToPlaceInstance(game.PlaceId, goodserver)
+    end)
 
 Misc:Seperator(" Open Menu ")
 
@@ -13686,4 +13734,3 @@ end)
 
 wait(4)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Chetdithglon/UI-Librarys/main/gerad%20lib'))()
-end
