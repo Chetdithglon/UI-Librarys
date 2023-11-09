@@ -328,6 +328,16 @@ coroutine.wrap(YTZCAJC_fake_script)()
 }
 
 game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+local args = {
+    [1] = "BartiloQuestProgress"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+local args = {
+    [1] = "ZQuestProgress"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
 
 
 
@@ -7541,7 +7551,7 @@ for i, bossName in ipairs(bossList) do
                 if boss then
                     bossStatus[i]:Set("Spawn: " .. bossName .. " ✅ ")
                 else
-                    bossStatus[i]:Set("Spawn: " .. bossName .. " ❌ ")
+                    bossStatus[i]:Set("Spawn: " .. bossName .. " 🙂 ")
                 end
             end)
         end
@@ -7584,7 +7594,7 @@ local bossStatus = {}
 
 -- Tạo label cho từng boss và theo dõi trạng thái spawn
 for i, bossName in ipairs(bossList) do
-    bossStatus[i] = Main:Label("")
+    bossStatus[i] = Main:Label("Status")
 
     spawn(function()
         while wait() do
@@ -7592,6 +7602,8 @@ for i, bossName in ipairs(bossList) do
                 local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
                 if boss then
                     bossStatus[i]:Set("Spawn: " .. bossName .. " ✅ ")
+                    else 
+                    bossStatus[i]:Set("Spawn: " .. bossName .. " 🙂 ")
                 end
             end)
         end
@@ -7642,7 +7654,7 @@ for i, bossName in ipairs(bossList) do
                 if boss then
                     bossStatus[i]:Set("Spawn: " .. bossName .. " ✅ ")
                 else
-                    bossStatus[i]:Set("Spawn: " .. bossName .. " ❌ ")
+                    bossStatus[i]:Set("Spawn: " .. bossName .. " 🙂 ")
                 end
             end)
         end
