@@ -6362,32 +6362,36 @@ for i, bossName in ipairs(bossList) do
     end)
 end
 
-local existingBosses = {}
-
--- Kiểm tra xem boss nào có sẵn và thêm vào danh sách
-for _, bossName in ipairs(bossList) do
-    if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
-        table.insert(existingBosses, bossName)
-    end
-end
-
 local BossName
-
--- Nếu có boss nào có sẵn thì tạo Dropdown
-if #existingBosses > 0 then
-    BossName = Main:Dropdown("Chọn Boss Farm", existingBosses, function(value)
-        _G.Select_Boss = value
-    end)
-end
 
 Main:Button("Làm Mới Boss", function()
     if BossName then
         BossName:Clear()
-        for _, bossName in ipairs(existingBosses) do
-            BossName:Add(bossName)
+        for i, bossName in ipairs(bossList) do
+            local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
+            if boss then
+                BossName:Add(bossName)
+            end
+        end
+    else
+        local existingBosses = {}
+
+        -- Kiểm tra xem boss nào có sẵn và thêm vào danh sách
+        for _, bossName in ipairs(bossList) do
+            if game:GetService("ReplicatedStorage"):FindFirstChild(bossName) then
+                table.insert(existingBosses, bossName)
+            end
+        end
+
+        -- Nếu có boss nào có sẵn thì tạo Dropdown
+        if #existingBosses > 0 then
+            BossName = Main:Dropdown("Chọn Boss Farm", existingBosses, function(value)
+                _G.Select_Boss = value
+            end)
         end
     end
 end)
+
 
 
 Main:Toggle("Farm Boss Đã Chọn",_G.Auto_Farm_Boss,function(value)
