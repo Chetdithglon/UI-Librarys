@@ -6367,7 +6367,10 @@ local BossName
 Main:Button("Làm Mới Boss", function()
     if BossName then
         BossName:Clear()
-        for i, bossName in ipairs(bossList) do
+        local existingBosses = {}
+
+        -- Kiểm tra xem boss nào có sẵn và thêm vào danh sách
+        for _, bossName in ipairs(bossList) do
             local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
             if boss then
                 BossName:Add(bossName)
@@ -6391,6 +6394,7 @@ Main:Button("Làm Mới Boss", function()
         end
     end
 end)
+
 
 
 
