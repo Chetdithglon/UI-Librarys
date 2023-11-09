@@ -8130,13 +8130,20 @@ Weapon:Toggle("Tự Động Đánh Sea Beasts",_G.SeaBeasts1,function(value)
 end)
 end		
 		
-Weapon:Seperator(" Haki + Sea Beasts ")		
+Weapon:Seperator("V2 + Ghoul ")		
 
 	 Weapon:Toggle("Mũ Đấu Trường + Tộc V2",_G.mudautr,function(value)
  _G.mudautr = value
  StopTween(_G.mudautr)
 end)
 
+Weapon:Toggle("Auto Đánh Boss + Đổi tộc Qủy",_G.mudautr,function(value)
+ _G.tocquy = value
+ _G.click = value
+ _G.FastAttack = value
+ _G.FastAttack1 = value
+ StopTween(_G.tocquy)
+end)
 
 spawn(function()
 		game:GetService("RunService").Heartbeat:Connect(function()
@@ -8424,15 +8431,7 @@ Weapon:Toggle("Tự Động Mua Kiếm Legendary",_G.AutoBuyLegendarySword,fu
 		end
 	end)
 
-Weapon:Seperator(" Ghoul")
 
-Weapon:Toggle("Auto Đánh Boss + Đổi tộc Qủy",_G.mudautr,function(value)
- _G.tocquy = value
- _G.click = value
- _G.FastAttack = value
- _G.FastAttack1 = value
- StopTween(_G.tocquy)
-end)
 	
 	
 	spawn(function()
