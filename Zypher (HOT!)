@@ -7592,7 +7592,6 @@ for i, bossName in ipairs(bossList) do
                 local boss = game:GetService("ReplicatedStorage"):FindFirstChild(bossName)
                 if boss then
                     bossStatus[i]:Set("Spawn: " .. bossName .. " ✅ ")
-                else
                 end
             end)
         end
