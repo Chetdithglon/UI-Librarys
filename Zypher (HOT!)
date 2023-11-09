@@ -7584,7 +7584,7 @@ local bossStatus = {}
 
 -- Tạo label cho từng boss và theo dõi trạng thái spawn
 for i, bossName in ipairs(bossList) do
-    bossStatus[i] = Main:Label("Status")
+    bossStatus[i] = Main:Label("")
 
     spawn(function()
         while wait() do
