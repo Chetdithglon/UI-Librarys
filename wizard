@@ -7719,10 +7719,18 @@ Main:Toggle("Nhận Nhiệm Vụ Boss",true,function(value)
 end)
 
 
- 
+ if World3 or World2 then
+Weapon:Seperator(" Haki + Sea Beasts ")
+Weapon:Toggle("Tự Động Mua Haki Màu",_G.Auto_Buy_Enchancement,function(value)
+ _G.Auto_Buy_Enchancement = value
+StopTween(_G.Auto_Buy_Enchancement)
+end)
+Weapon:Toggle("Tự Động Đánh Sea Beasts",_G.SeaBeasts1,function(value)
+ _G.SeaBeasts1 = value
+ StopTween(_G.SeaBeasts1)
+end)
+end		
  if World3 then
-
-
 Weapon:Seperator("Elite Hunter")
 
 local Total_Elite_Hunter = Weapon:Label("Elite Hunter")
@@ -8118,17 +8126,7 @@ end)
 		
 		
 		
-if World3 or World2 then
-Weapon:Seperator(" Haki + Sea Beasts ")
-Weapon:Toggle("Tự Động Mua Haki Màu",_G.Auto_Buy_Enchancement,function(value)
- _G.Auto_Buy_Enchancement = value
-StopTween(_G.Auto_Buy_Enchancement)
-end)
-Weapon:Toggle("Tự Động Đánh Sea Beasts",_G.SeaBeasts1,function(value)
- _G.SeaBeasts1 = value
- StopTween(_G.SeaBeasts1)
-end)
-end		
+
 		
 Weapon:Seperator("V2 + Ghoul ")		
 
