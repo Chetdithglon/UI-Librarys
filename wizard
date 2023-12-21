@@ -318,65 +318,7 @@ local function YTZCAJC_fake_script() -- ImageButton.LocalScript
 end
 coroutine.wrap(YTZCAJC_fake_script)()
 
-
-
-
-
-
-
-
-
-
-
-
-
- repeat wait() until game.Players
-    repeat wait() until game.Players.LocalPlayer
-    repeat wait() until game.ReplicatedStorage
-    repeat wait() until game.ReplicatedStorage:FindFirstChild("Remotes");
-    repeat wait() until game.Players.LocalPlayer:FindFirstChild("PlayerGui");
-    repeat wait() until game.Players.LocalPlayer.PlayerGui:FindFirstChild("Main");
-    repeat wait() until game:GetService("Players")
-    repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("Energy")
-    
-    wait(1)
-    
-    if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
-    
-    if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
-        repeat wait()
-            if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
-                if _G.Team == "Pirate" then
-                    for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.Activated)) do                                                                                                
-                        v.Function()
-                    end
-                elseif _G.Team == "Marine" then
-                    for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.ViewportFrame.TextButton.Activated)) do                                                                                                
-                        v.Function()
-                    end
-                else
-                    for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.Activated)) do                                                                                                
-                        v.Function()
-                    end
-                end
-            end
-        until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
-    end
-
-
-
-
-
-
-
-
-
-                
-                
-                
-
-                
-                
+           
                 
                 
 
@@ -4184,7 +4126,7 @@ end
 spawn(function()
 	pcall(function()
 		game:GetService("RunService").Stepped:Connect(function()
-		  	if _G.Auto_Farm_Level or _G.Auto_New_World or _G.AutoFarmFruitMastery or _G.tpkit or  _G.thuocsung or _G.sungtegiac or _G.shinapo or _G.chatpong or _G.rangnanh or  _G.magma or _G.Auto_Third_World or _G.duoica or _G.tocquy or _G.TeleportIsland or _G.SeaBeasts1 or _G.vayrong or _G.Auto_Farm_Boss or _G.Autotushita or _G.Auto_Elite_Hunter or _G.Auto_Cake_Prince or _G.Auto_Farm_All_Boss or _G.Auto_Saber or _G.Auto_Pole  or _G.Auto_Farm_Angel_Wing or _G.Auto_Factory_Farm or _G.Auto_Farm_Ectoplasm or _G.mudautr or _G.Auto_Rengoku or _G.Auto_Farm_Radioactive or _G.Auto_Evo_Race_V2 or _G.Auto_Swan_Glasses or _G.Auto_Dragon_Trident or _G.Auto_Soul_Reaper  or _G.Auto_Farm_Bone or _G.canho or _G.Cacao  or _G.nuocmat or _G.Auto_Open_Dough_Dungeon or _G.Auto_Rainbow_Haki or _G.Auto_Musketeer_Hat or _G.Auto_Holy_Torch or _G.Auto_Canvander or _G.d or _G.Auto_Twin_Hook or _G.Auto_Serpent_Bow or _G.AutoFarmMaterial or _G.Auto_Fully_Death_Step or _G.Auto_Fully_SharkMan_Karate or _G.Teleport_to_Player or _G.Auto_Kill_Player_Melee or _G.Auto_Kill_Player_Gun or _G.Start_Tween_Island or _G.Auto_Next_Island or _G.autoraid or AutoNextIsland or _G.Auto_Farm_Sword or _G.MeleeFarm or _G.AutoFarmSelectMonster or _G.AutoFarmKenHakivor or _G.AutoObservationHakiV2  or _G.AutoFactory or _G.Auto_Kill_Law then
+		  	if _G.Auto_Farm_Level or _G.Auto_New_World or _G.tpkit or  _G.thuocsung or _G.sungtegiac or _G.shinapo or _G.chatpong or _G.rangnanh or  _G.magma or _G.Auto_Third_World or _G.duoica or _G.tocquy or _G.TeleportIsland or _G.SeaBeasts1 or _G.vayrong or _G.Auto_Farm_Boss or _G.Autotushita or _G.Auto_Elite_Hunter or _G.Auto_Cake_Prince or _G.Auto_Farm_All_Boss or _G.Auto_Saber or _G.Auto_Pole  or _G.Auto_Factory_Farm or _G.Auto_Farm_Ectoplasm or _G.mudautr or _G.Auto_Rengoku or _G.Auto_Farm_Radioactive or _G.Auto_Swan_Glasses or _G.Auto_Dragon_Trident or _G.Auto_Soul_Reaper  or _G.Auto_Farm_Bone or _G.canho or _G.Cacao  or _G.nuocmat or _G.Auto_Open_Dough_Dungeon or _G.Auto_Rainbow_Haki or _G.Auto_Musketeer_Hat or _G.Auto_Holy_Torch or _G.Auto_Canvander or _G.d or _G.Auto_Twin_Hook or _G.Auto_Serpent_Bow or _G.AutoFarmMaterial or _G.Auto_Fully_Death_Step or _G.Auto_Fully_SharkMan_Karate or _G.Teleport_to_Player or _G.Auto_Kill_Player_Melee or _G.Auto_Kill_Player_Gun or _G.Start_Tween_Island or _G.Auto_Next_Island or _G.autoraid or AutoNextIsland or _G.Auto_Farm_Sword or _G.MeleeFarm or _G.AutoFarmSelectMonster or _G.AutoFarmKenHakivor or _G.AutoObservationHakiV2  or _G.AutoFactory or _G.Auto_Kill_Law then
 			 	if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
 					local Noclip = Instance.new("BodyVelocity")
 					Noclip.Name = "BodyClip"
@@ -4204,7 +4146,7 @@ end)
 spawn(function()
 	pcall(function()
 		game:GetService("RunService").Stepped:Connect(function()
-			if _G.Auto_Farm_Level or _G.Auto_New_World or _G.TeleportIsland or _G.Auto_Third_World or _G.tpkit or _G.shinapo or _G.rangnanh or _G.chatpong or _G.thuocsung or _G.sungtegiac or _G.Auto_Farm_Chest or _G.duoica or  _G.Auto_Farm_Boss or _G.SeaBeasts1 or _G.vayrong  or _G.tocquy or _G.Auto_Elite_Hunter or _G.AutoFarmKenHaki or _G.AutoFactory or _G.AutoFarmSelectMonster or _G.Auto_Cake_Prince or _G.Auto_Farm_All_Boss or _G.Auto_Saber or _G.Auto_Pole  or _G.Auto_Factory_Farm or _G.Auto_Farm_Ectoplasm or _G.mudautr or _G.d or _G.Auto_Rengoku or _G.Autotushita or _G.Auto_Farm_Radioactive   or _G.Auto_Evo_Race_V2 or _G.Auto_Swan_Glasses or _G.Auto_Dragon_Trident or _G.Auto_Soul_Reaper or _G.Auto_Farm_Fish_Tail or _G.Cacao or _G.canho or _G.magma or _G.Auto_Farm_Mini_Tusk or _G.nuocmat or  _G.Auto_Farm_Bone or _G.Auto_Open_Dough_Dungeon or _G.Auto_Rainbow_Haki or _G.Auto_Musketeer_Hat or _G.Auto_Holy_Torch or _G.Auto_Canvander or _G.AutoFarmMaterial or _G.autoraid or _G.Auto_Twin_Hook or AutoNextIsland or _G.Auto_Serpent_Bow or _G.Auto_Fully_Death_Step or _G.Auto_Fully_SharkMan_Karate or _G.Teleport_to_Player or _G.Auto_Kill_Player_Melee or _G.Auto_Kill_Player_Gun or _G.Start_Tween_Island or _G.AutoObservationHakiV2 or _G.d or _G.Auto_Next_Island or _G.Auto_Farm_Sword or _G.MeleeFarm or _G.Auto_Kill_Law then
+			if _G.Auto_Farm_Level or _G.Auto_New_World or _G.TeleportIsland or _G.Auto_Third_World or _G.tpkit or _G.shinapo or _G.rangnanh or _G.chatpong or _G.thuocsung or _G.sungtegiac or _G.Auto_Farm_Chest or _G.duoica or  _G.Auto_Farm_Boss or _G.SeaBeasts1 or _G.vayrong  or _G.tocquy or _G.Auto_Elite_Hunter or _G.AutoFarmKenHaki or _G.AutoFactory or _G.AutoFarmSelectMonster or _G.Auto_Cake_Prince or _G.Auto_Farm_All_Boss or _G.Auto_Saber or _G.Auto_Pole  or _G.Auto_Factory_Farm or _G.Auto_Farm_Ectoplasm or _G.mudautr or _G.d or _G.Auto_Rengoku or _G.Autotushita or _G.Auto_Farm_Radioactive   or _G.Auto_Swan_Glasses or _G.Auto_Dragon_Trident or _G.Auto_Soul_Reaper or _G.Auto_Farm_Fish_Tail or _G.Cacao or _G.canho or _G.magma or _G.Auto_Farm_Mini_Tusk or _G.nuocmat or  _G.Auto_Farm_Bone or _G.Auto_Open_Dough_Dungeon or _G.Auto_Rainbow_Haki or _G.Auto_Musketeer_Hat or _G.Auto_Holy_Torch or _G.Auto_Canvander or _G.AutoFarmMaterial or _G.autoraid or _G.Auto_Twin_Hook or AutoNextIsland or _G.Auto_Serpent_Bow or _G.Auto_Fully_Death_Step or _G.Auto_Fully_SharkMan_Karate or _G.Teleport_to_Player or _G.Auto_Kill_Player_Melee or _G.Auto_Kill_Player_Gun or _G.Start_Tween_Island or _G.AutoObservationHakiV2 or _G.d or _G.Auto_Next_Island or _G.Auto_Farm_Sword or _G.MeleeFarm or _G.Auto_Kill_Law then
 				for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
 					if v:IsA("BasePart") then
 						v.CanCollide = false    
@@ -5190,6 +5132,44 @@ spawn(function()
 
 ca:Seperator("Kitsune Island") 
 
+
+local FullMoon = ca:Label("")
+
+spawn(function()
+    while task.wait() do
+        pcall(function()
+             if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
+                        FullMoon:Set("🌑 : Full Moon 100%")
+                    elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" then
+                        FullMoon:Set("🌒 : Full Moon 75%")
+                    elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
+                        FullMoon:Set("🌓 : Full Moon 50%")
+                    elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
+                        FullMoon:Set("🌗 : Full Moon 25%")
+                    elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
+                        FullMoon:Set("🌖 : Full Moon 15%")
+                    else
+                        FullMoon:Set("🌚 : Full Moon 0%")
+                    end
+                end)
+            end
+end)
+
+
+local mr = ca:Label("")
+
+task.spawn(function()
+	while task.wait() do
+		pcall(function()
+			if game.Workspace._WorldOrigin.Locations:FindFirstChild("KitsuneIsland") then
+				mr:Set("🏝 Kitsune Island :  ✅")
+			else
+				mr:Set("🏝 Kitsune Island :  ❌")
+			end
+		end)
+	end
+end) 
+
  ca:Toggle("ESP Island Kitsune",false,function(value)
         IslandESP = value
         while IslandESP do wait()
@@ -5224,6 +5204,7 @@ spawn(function()
         end
     end
 end)
+
 
 
 
@@ -5283,7 +5264,8 @@ for _,v in next, workspace.EmberTemplate:GetDescendants() do
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
     end
 end
- end)
+end)
+
 
 
 
@@ -6042,234 +6024,7 @@ spawn(function()
  end
 end)
 
---Main:Seperator(" Thông Thạo ")
- 
---Main:Toggle("Auto Farm Thông Thạo Fruit",_G.AutoFarmFruitMastery,function(value)
- -- _G.AutoFarmFruitMastery = value
---  StopTween(_G.AutoFarmFruitMastery)
- -- if _G.AutoFarmFruitMastery == false then
---  UseSkill = false
---  end
- -- end)
- 
- spawn(function()
-  while wait() do
-  if _G.AutoFarmFruitMastery then
-  pcall(function()
-   local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
-   if not string.find(QuestTitle, NameMon) then
-   StartMagnet = false
-   UseSkill = false
-   game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-   end
-   if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-   StartMasteryFruitStartMagnet = false
-   UseSkill = false
-   CheckQuest()
-   repeat wait()
-   topos(CFrameQuest)
-   until (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 or not _G.AutoFarmFruitMastery
-   if (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 then
-   wait(1.2)
-   game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest",NameQuest,LevelQuest)
-   wait(0.5)
-   end
-   elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-   CheckQuest()
-   if game:GetService("Workspace").Enemies:FindFirstChild(Ms) then
-   for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-   if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-   if v.Name == Ms then
-   if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) then
-   HealthMs = v.Humanoid.MaxHealth * _G.Kill_At/100
-   repeat task.wait()
-   if v.Humanoid.Health <= HealthMs then
-   AutoHaki()
-   EquipWeapon(game:GetService("Players").LocalPlayer.Data.DevilFruit.Value)
-   topos(v.HumanoidRootPart.CFrame * MethodFarm)
-   v.HumanoidRootPart.CanCollide = false
-   PosMonMasteryFruit = v.HumanoidRootPart.CFrame
-   v.Humanoid.WalkSpeed = 0
-   v.Head.CanCollide = false
-   UseSkill = true
-   else
-    UseSkill = false
-   AutoHaki()
-   EquipWeapon(_G.Select_Weapon)
-   topos(v.HumanoidRootPart.CFrame * MethodFarm)
-   v.HumanoidRootPart.CanCollide = false
-   v.HumanoidRootPart.Size = Vector3.new(50,50,50)
-   PosMonMasteryFruit = v.HumanoidRootPart.CFrame
-   v.Humanoid.WalkSpeed = 0
-   v.Head.CanCollide = false
-   end
-   StartMasteryFruitStartMagnet = true
-   game:GetService'VirtualUser':CaptureController()
-   game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-   until not _G.AutoFarmFruitMastery or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
-   else
-    UseSkill = false
-   StartMasteryFruitStartMagnet = false
-   game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-   end
-   end
-   end
-   end
-   else
-    StartMasteryFruitStartMagnet = false
-   UseSkill = false
-   local Mob = game:GetService("ReplicatedStorage"):FindFirstChild(Ms)
-   if Mob then
-   topos(Mob.HumanoidRootPart.CFrame * MethodFarm)
-   else
-    if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame.Y <= 1 then
-   game:GetService("Players").LocalPlayer.Character.Humanoid.Jump = true
-   task.wait()
-   game:GetService("Players").LocalPlayer.Character.Humanoid.Jump = false
-   end
-   end
-   end
-   end
-   end)
-  end
-  end
-  end)
- 
- spawn(function()
-  while wait() do
-  if UseSkill then
-  pcall(function()
-   CheckQuest()
-   for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-   if game:GetService("Players").LocalPlayer.Character:FindFirstChild(game:GetService("Players").LocalPlayer.Data.DevilFruit.Value) then
-   MasBF = game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Data.DevilFruit.Value].Level.Value
-   elseif game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(game:GetService("Players").LocalPlayer.Data.DevilFruit.Value) then
-   MasBF = game:GetService("Players").LocalPlayer.Backpack[game:GetService("Players").LocalPlayer.Data.DevilFruit.Value].Level.Value
-   end
-   if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Dragon-Dragon") then
-   if _G.SkillZ then
-   local args = {
-    [1] = PosMonMasteryFruit.Position
-   }
-   game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").Name].RemoteEvent:FireServer(unpack(args))
-   game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
-   game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
-   end
-   if _G.SkillX then
-   local args = {
-    [1] = PosMonMasteryFruit.Position
-   }
-   game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").Name].RemoteEvent:FireServer(unpack(args))
-   game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
-   game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
-   end
-   if _G.SkillC then
-   local args = {
-    [1] = PosMonMasteryFruit.Position
-   }
-   game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").Name].RemoteEvent:FireServer(unpack(args))
-   game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game)
-   wait(2)
-   game:GetService("VirtualInputManager"):SendKeyEvent(false,"C",false,game)
-   end
-   elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild("Venom-Venom") then
-   if _G.SkillZ then
-   local args = {
-    [1] = PosMonMasteryFruit.Position
-   }
-   game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").Name].RemoteEvent:FireServer(unpack(args))
-   game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
-   game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
-   end
-   if _G.SkillX then
-   local args = {
-    [1] = PosMonMasteryFruit.Position
-   }
-   game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").Name].RemoteEvent:FireServer(unpack(args))
-   game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
-   game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
-   end
-   if _G.SkillC then
-   local args = {
-    [1] = PosMonMasteryFruit.Position
-   }
-   game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").Name].RemoteEvent:FireServer(unpack(args))
-   game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game)
-   wait(2)
-   game:GetService("VirtualInputManager"):SendKeyEvent(false,"C",false,game)
-   end
-   elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild("Human-Human: Buddha") then
-   if _G.SkillZ and game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Size == Vector3.new(2, 2.0199999809265, 1) then
-   local args = {
-    [1] = PosMonMasteryFruit.Position
-   }
-   game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").Name].RemoteEvent:FireServer(unpack(args))
-   game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
-   game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
-   end
-   if _G.SkillX then
-   local args = {
-    [1] = PosMonMasteryFruit.Position
-   }
-   game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").Name].RemoteEvent:FireServer(unpack(args))
-   game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
-   game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
-   end
-   if _G.SkillC then
-   local args = {
-    [1] = PosMonMasteryFruit.Position
-   }
-   game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").Name].RemoteEvent:FireServer(unpack(args))
-   game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game)
-   game:GetService("VirtualInputManager"):SendKeyEvent(false,"C",false,game)
-   end
-   if _G.SkillV then
-   local args = {
-    [1] = PosMonMasteryFruit.Position
-   }
-   game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").Name].RemoteEvent:FireServer(unpack(args))
-   game:GetService("VirtualInputManager"):SendKeyEvent(true,"V",false,game)
-   game:GetService("VirtualInputManager"):SendKeyEvent(false,"V",false,game)
-   end
-   elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild(game:GetService("Players").LocalPlayer.Data.DevilFruit.Value) then
-   if _G.SkillZ then
-   local args = {
-    [1] = PosMonMasteryFruit.Position
-   }
-   game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").Name].RemoteEvent:FireServer(unpack(args))
-   game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
-   game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
-   end
-   if _G.SkillX then
-   local args = {
-    [1] = PosMonMasteryFruit.Position
-   }
-   game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").Name].RemoteEvent:FireServer(unpack(args))
-   game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
-   game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
-   end
-   if _G.SkillC then
-   local args = {
-    [1] = PosMonMasteryFruit.Position
-   }
-   game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").Name].RemoteEvent:FireServer(unpack(args))
-   game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game)
-   game:GetService("VirtualInputManager"):SendKeyEvent(false,"C",false,game)
-   end
-   if _G.SkillV then
-   local args = {
-    [1] = PosMonMasteryFruit.Position
-   }
-   game:GetService("Players").LocalPlayer.Character[game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").Name].RemoteEvent:FireServer(unpack(args))
-   game:GetService("VirtualInputManager"):SendKeyEvent(true,"V",false,game)
-   game:GetService("VirtualInputManager"):SendKeyEvent(false,"V",false,game)
-   end
-   end
-   end
-   end)
-  end
-  end
-  end)
+
  
  spawn(function()
   game:GetService("RunService").RenderStepped:Connect(function()
@@ -10548,47 +10303,43 @@ Race:Seperator("Buy + Bật Tộc")
  end)
   
    Race:Toggle("Tự Động Bật V4",_G.Auto_Farm_Bone3,function(value)
- _G.Auto_Farm_Bone3 = value
- StopTween(_G.Auto_Farm_Bone3)
- spawn(function()
-    pcall(function()
-    while wait(0.1) do 
-    if _G.Auto_Farm_Bone3  then
-local args = {
-    [1] = true
-}
-game:GetService("Players").LocalPlayer.Backpack.Awakening.RemoteFunction:InvokeServer(unpack(args))
+  _G.V4 = value
+  StopTween(_G.V4)
+   end)
 
-end
-end
-end)
-end)
-   end) 
-end
-  
-
-Race:Toggle("Tự Động Mua Train",_G.Auto_Farm_Bone4,function(value)
- _G.Auto_Farm_Bone4 = value
- StopTween(_G.Auto_Farm_Bone4)
-end)
 spawn(function()
-    pcall(function()
-        while wait(0.1) do
-            if _G.Auto_Farm_Bone4 then
-    local args = {
-    [1] = true
-}
-
-local args = {
-    [1] = "UpgradeRace",
-    [2] = "Buy"
-}
-
-game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+    while wait() do
+        pcall(function()
+            if _G.V4 then
+                game:GetService("VirtualInputManager"):SendKeyEvent(true,"Y",false,game)
+                wait(0.1)
+                game:GetService("VirtualInputManager"):SendKeyEvent(false,"Y",false,game)
             end
-end 
-end)  
+        end)
+    end
 end)
+  end
+
+Race:Toggle("Tự Động Mua Train", false, function(value)
+    _G.Auto_Farm_Bone4 = value
+    StopTween(_G.Auto_Farm_Bone4)
+end)
+
+spawn(function()
+    while true do
+        wait(0.1)
+
+        if _G.Auto_Farm_Bone4 then
+            local args = {
+                [1] = "UpgradeRace",
+                [2] = "Buy"
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+        end
+    end
+end)
+
 
 
 
@@ -13912,7 +13663,7 @@ pcall(function()
 end)
 pcall(function() 
     game:GetService("Players").LocalPlayer.PlayerGui.Main.Energy.Visible = false
-    --game:GetService("Players").LocalPlayer.PlayerGui.Main.Energy:Destroy()
+    --game:GetService("Players").LocalPlayer.PlayerGuain.Energy:Destroy()
 end)
 for k,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main:GetChildren()) do 
     if v:IsA("ImageButton") then 
