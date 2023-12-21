@@ -5169,6 +5169,7 @@ task.spawn(function()
 		end)
 	end
 end) 
+
  ca:Toggle("ESP Island Kitsune",false,function(value)
         IslandESP = value
         while IslandESP do wait()
@@ -5203,6 +5204,7 @@ spawn(function()
         end
     end
 end)
+
 
 
 
@@ -5262,7 +5264,8 @@ for _,v in next, workspace.EmberTemplate:GetDescendants() do
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
     end
 end
- end)
+end)
+
 
 
 
@@ -10315,7 +10318,7 @@ spawn(function()
         end)
     end
 end)
-  
+  end
 
 Race:Toggle("Tự Động Mua Train", false, function(value)
     _G.Auto_Farm_Bone4 = value
