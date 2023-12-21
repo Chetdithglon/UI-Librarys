@@ -5190,7 +5190,7 @@ spawn(function()
 
 ca:Seperator("Kitsune Island") 
 
- ca:Toggle("ESP Island",false,function(value)
+ ca:Toggle("ESP Island Kitsune",false,function(value)
         IslandESP = value
         while IslandESP do wait()
             UpdateIslandESP() 
