@@ -5010,7 +5010,7 @@ end)
 
 
 
-AutoMisc3:Toggle("Tàn Hình Quái",false,function(value)
+Setting:Toggle("Tàn Hình Quái",false,function(value)
     _G.inv = value
     while _G.inv do wait()
         pcall(function()
@@ -5038,7 +5038,7 @@ end)
 end
 end)
 
-AutoMisc3:Toggle("Remove Hiệu Ứng chết",true,function(value)
+Setting:Toggle("Remove Hiệu Ứng chết",true,function(value)
      _G.Remove_EffectDeath = value
     end)
 
