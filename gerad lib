@@ -1,5 +1,20 @@
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function Attack1Function()
 	local ac = CombatFrameworkR.activeController
 	if ac and ac.equipped then
@@ -35,6 +50,106 @@ function Attack1Function()
 	end
 end
 
+
+
+function TPchest(P1)          
+                    local Distance = (P1.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+               if Distance >= 0 then
+                        Speed = 1200000
+                    end
+                    
+                   local tween =  game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance/Speed), {CFrame = P1  }) tween:Play()                                    
+              end
+
+
+
+spawn(function()
+local gg = getrawmetatable(game)
+local old = gg.__namecall
+setreadonly(gg,false)
+gg.__namecall = newcclosure(function(...)
+ local method = getnamecallmethod()
+ local args = {
+   ...
+ }
+ if tostring(method) == "FireServer" then
+ if tostring(args[1]) == "RemoteEvent" then
+ if tostring(args[2]) ~= "true" and tostring(args[2]) ~= "false" then
+ if _G.UseSkill then
+ if type(args[2]) == "vector" then
+ args[2] = PositionSkillMasteryDevilFruit
+ else
+   args[2] = CFrame.new(PositionSkillMasteryDevilFruit)
+ end
+ return old(unpack(args))
+ end
+ end
+ end
+ end
+--return args
+ return old(...)
+ end)
+end)
+
+
+
+
+
+
+
+
+
+
+
+	--// Fast Attack
+	local AttackList = {"Slow", "Normal", "Pro"}
+	_G.FastAttackDelay = "Normal"
+	AttackList = true
+	spawn(function()
+	    while wait(.1) do
+	        if _G.FastAttackDelay then
+	            pcall(function()
+	                if _G.FastAttackDelay == "Slow" then
+	                    _G.FastAttackDelay = 0.2
+	                elseif _G.FastAttackDelay == "Default" then
+	                    _G.FastAttackDelay = 0.5
+	                elseif _G.FastAttackDelay == "Normal" then
+	                    _G.FastAttackDelay = 0.2
+	                elseif _G.FastAttackDelay == "Pro" then
+	                    _G.FastAttackDelay = 0
+	                end
+	            end)
+	        end
+	    end
+	end)
+	
+	
+	
+	spawn(function()
+	while true do
+	if _G.FastAttack1 then
+	pcall(function()
+	CameraShakerR:Stop()
+	CombatFramework.activeController.attacking = false
+	CombatFramework.activeController.timeToNextAttack = 0
+	CombatFramework.activeController.increment = 3
+	CombatFramework.activeController.hitboxMagnitude = 100
+	CombatFramework.activeController.blocking = false
+	CombatFramework.activeController.timeToNextBlock = 0
+	CombatFramework.activeController.focusStart = 0
+	CombatFramework.activeController.humanoid.AutoRotate = true
+	end)
+	end
+	task.wait()
+	end
+	end)
+	
+	
+	
+	
+	
+	
+	--// Module
 	function GetBladeHit()
 	    local CombatFrameworkLib = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))
 	    local CmrFwLib = CombatFrameworkLib[2]
@@ -91,79 +206,23 @@ end
 	end)
 
 
-	local AttackList = {"Slow", "Normal", "Pro"}
-	_G.FastAttackDelay = "Normal"
-	AttackList = true
-	spawn(function()
-	    while wait(.1) do
-	        if _G.FastAttackDelay then
-	            pcall(function()
-	                if _G.FastAttackDelay == "Slow" then
-	                    _G.FastAttackDelay = 0.2
-	                elseif _G.FastAttackDelay == "Default" then
-	                    _G.FastAttackDelay = 0.5
-	                elseif _G.FastAttackDelay == "Normal" then
-	                    _G.FastAttackDelay = 0.2
-	                elseif _G.FastAttackDelay == "Pro" then
-	                    _G.FastAttackDelay = 0
-	                end
-	            end)
-	        end
-	    end
-	end)
-FastAttackDelay = "Normal"
-local AttackList = {"Slow", "Normal", "Pro"}
-AutoMisc2:Dropdown("Attack Delay",AttackList,function(value)
-        FastAttackDelay = value
-  end)
-
-Setting:Toggle("Fast Attack [1]",true,function(value)
-    _G.FastAttack = value
- if value then
-     Attack1Function()
-     end
-end)
 
 
 
-function TPchest(P1)          
-                    local Distance = (P1.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-               if Distance >= 0 then
-                        Speed = 1200000
-                    end
-                    
-                   local tween =  game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance/Speed), {CFrame = P1  }) tween:Play()                                    
-              end
 
 
 
-spawn(function()
-local gg = getrawmetatable(game)
-local old = gg.__namecall
-setreadonly(gg,false)
-gg.__namecall = newcclosure(function(...)
- local method = getnamecallmethod()
- local args = {
-   ...
- }
- if tostring(method) == "FireServer" then
- if tostring(args[1]) == "RemoteEvent" then
- if tostring(args[2]) ~= "true" and tostring(args[2]) ~= "false" then
- if _G.UseSkill then
- if type(args[2]) == "vector" then
- args[2] = PositionSkillMasteryDevilFruit
- else
-   args[2] = CFrame.new(PositionSkillMasteryDevilFruit)
- end
- return old(unpack(args))
- end
- end
- end
- end
---return args
- return old(...)
- end)
-end)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4936,14 +4995,83 @@ spawn(function()
 end)
 
 
-
-
+local AttackList = {"Slow", "Normal", "Pro"}
+_G.FastAttackDelay = "Normal"
+Setting:Dropdown("Attack Delay",AttackList,function(value)
+        _G.FastAttackDelay = value
+  end)
 Setting:Toggle("Slow Attack",false,function(value)
  _G.FastAttack = value
  if value then
      Attack1Function()
      end
+end) 
+
+
+
+
+
+
+    Setting:Toggle("Ẩn Gui",false,function(value)
+        if value == true then
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Beli.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.HP.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Energy.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.StatsButton.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ShopButton.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Skills.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Level.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.MenuButton.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Code.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Settings.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Mute.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.CrewButton.Visible = false
+        else
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Beli.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.HP.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Energy.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.StatsButton.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ShopButton.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Skills.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Level.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.MenuButton.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Code.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Settings.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Mute.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.CrewButton.Visible = true
+        end
+    end)
+    
+    
+    
+    
+    
+    
+ Setting:Toggle("Fix lag nhẹ",nil,function(value)
+    _G.DeleteAttackFx = value
+    if _G.DeleteAttackFx == true then
+    while _G.DeleteAttackFx do wait()
+        for i, v in pairs(game.Workspace["_WorldOrigin"]:GetChildren()) do
+            if v.Name == "CurvedRing" or v.Name == "DamageCounter" or v.Name == "SwordSlash" or v.Name == "Damage" or v.Name == "Mon" or v.Name == "Sounds" then
+                v:Destroy() 
+            end
+        end
+    end
+    end
 end)
+    
+    spawn(function()
+      while wait() do
+      if _G.DeleteAttackFx then
+        for i, v in pairs(game.Workspace["_WorldOrigin"]:GetChildren()) do
+            if v.Name == "CurvedRing" or v.Name == "SlashHit" or v.Name == "DamageCounter" or v.Name == "SwordSlash" or v.Name == "SlashTail" or v.Name == "Sounds" then
+                v:Destroy() 
+            end
+        end
+    end
+    end
+end)    
+
 
 
 
@@ -4955,7 +5083,7 @@ xShadowx = debug.getupvalues(xShadowFastAttackx)[2]
 
 spawn(function()
     game:GetService("RunService").RenderStepped:Connect(function()
-        if _G.FastAttack then
+        if _G.FastAttack1 then
             if typeof(xShadowx) == "table" then
                 pcall(function()
                     xShadowx.activeController.timeToNextAttack = (math.huge^math.huge^math.huge)
@@ -5060,8 +5188,8 @@ end)
 
 ca:Toggle("Kill Cá ̉( Dễ Die )",_G.canho,function(value)
  _G.canho = value
- _G.FastAttack = value
  _G.FastAttack1 = value
+ _G.FastAttack = value
  _G.click = value
  StopTween(_G.canho)
  end)
@@ -5323,137 +5451,9 @@ end
 end)
 
 
-
-
-    Setting:Toggle("Fast Attack [2]",true,function(value)
-        _G.FastAttack2 = value
-    end)   
-    Setting:Toggle("Ẩn Gui",false,function(value)
-        if value == true then
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Beli.Visible = false
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.HP.Visible = false
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Energy.Visible = false
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.StatsButton.Visible = false
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ShopButton.Visible = false
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Skills.Visible = false
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Level.Visible = false
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.MenuButton.Visible = false
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Code.Visible = false
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Settings.Visible = false
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Mute.Visible = false
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.CrewButton.Visible = false
-        else
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Beli.Visible = true
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.HP.Visible = true
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Energy.Visible = true
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.StatsButton.Visible = true
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ShopButton.Visible = true
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Skills.Visible = true
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Level.Visible = true
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.MenuButton.Visible = true
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Code.Visible = true
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Settings.Visible = true
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Mute.Visible = true
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.CrewButton.Visible = true
-        end
-    end)
-    
-    
-    
-    
-    
-    
- Setting:Toggle("Fix lag nhẹ",nil,function(value)
-    _G.DeleteAttackFx = value
-    if _G.DeleteAttackFx == true then
-    while _G.DeleteAttackFx do wait()
-        for i, v in pairs(game.Workspace["_WorldOrigin"]:GetChildren()) do
-            if v.Name == "CurvedRing" or v.Name == "DamageCounter" or v.Name == "SwordSlash" or v.Name == "Damage" or v.Name == "Mon" or v.Name == "Sounds" then
-                v:Destroy() 
-            end
-        end
-    end
-    end
-end)
-    
-    spawn(function()
-      while wait() do
-      if _G.DeleteAttackFx then
-        for i, v in pairs(game.Workspace["_WorldOrigin"]:GetChildren()) do
-            if v.Name == "CurvedRing" or v.Name == "SlashHit" or v.Name == "DamageCounter" or v.Name == "SwordSlash" or v.Name == "SlashTail" or v.Name == "Sounds" then
-                v:Destroy() 
-            end
-        end
-    end
-    end
-end)    
-    
-local DelayList = {"0.100", "0.165", "0.175", "0.185", "0.200", "0.300"}
-
-Setting:Dropdown("Attack Delay",DelayList,function(value)
-        FastAttackDelay = value
-  end)
-        spawn(function()
-            while task.wait() do
-                if FastAttackDelay then
-                    pcall(function()
-                        if FastAttackDelay == "0.50" then
-                            FastAttackDelay = 0.050
-                        elseif FastAttackDelay == "0.200" then
-                            FastAttackDelay = 0.2
-                        elseif FastAttackDelay == "0.300" then
-                            FastAttackDelay = 0.3
-                        elseif FastAttackDelay == "0.175" then
-                            FastAttackDelay = 0.175
-                        elseif FastAttackDelay == "0.185" then
-                            FastAttackDelay = 0.185
-                        elseif FastAttackDelay == "0.165" then
-                            FastAttackDelay = 0.165
-                        end
-                    end)
-                end
-            end
-        end)        
-    
-   Setting:Toggle("Fast Attack", true, function(value)
-_G.FastAttack = value
-end)
-
-
-xShadowFastAttackx = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
-
-xShadowx = debug.getupvalues(xShadowFastAttackx)[2]
-
-spawn(function()
-    game:GetService("RunService").RenderStepped:Connect(function()
-        if _G.FastAttack then
-            if typeof(xShadowx) == "table" then
-                pcall(function()
-                    xShadowx.activeController.timeToNextAttack = (math.huge^math.huge^math.huge)
-                    xShadowx.activeController.timeToNextAttack = 0
-                    xShadowx.activeController.hitboxMagnitude = 60
-                    xShadowx.activeController.active = false
-                    xShadowx.activeController.timeToNextBlock = 0
-                    xShadowx.activeController.focusStart = 0
-                    xShadowx.activeController.increment = 4
-                    xShadowx.activeController.blocking = false
-                    xShadowx.activeController.attacking = false
-                    xShadowx.activeController.humanoid.AutoRotate = 50
-                end)
-            end
-        end
-    end)
-end)
-spawn(function()
-    game:GetService("RunService").RenderStepped:Connect(function()
-        if _G.FastAttack == true then
-            game.Players.LocalPlayer.Character.Stun.Value = 0
-            game.Players.LocalPlayer.Character.Busy.Value = false        
-        end
-    end)
-end) 
-
-
+Setting:Toggle("Fast Attack",true,function(value)
+ _G.FastAttack1 = value
+ end)
 
 
 Setting:Toggle("Auto Click",false,function(value)
@@ -10399,7 +10399,7 @@ Race:Seperator("Buy + Bật Tộc")
    Race:Toggle("Kill Người Chơi ( 90% Win )",_G.killplayertrain,function(value)
  _G.killplayertrain = value
  _G.click = value
- _G.FastAttack = value
+ _G.FastAttack1 = value
  StopTween(_G.killplayertrain)
  end)
   
@@ -13794,6 +13794,7 @@ end)
 
 wait(4)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/hub5144/1/main/2'))()
+
 
 
 
