@@ -5,7 +5,7 @@
 
 
 
-
+setfpscap(120)
 
 
 
@@ -5000,7 +5000,7 @@ _G.FastAttackDelay = "Normal"
 Setting:Dropdown("Attack Delay",AttackList,function(value)
         _G.FastAttackDelay = value
   end)
-Setting:Toggle("Slow Attack",false,function(value)
+Setting:Toggle("Slow Attack",true,function(value)
  _G.FastAttack = value
  if value then
      Attack1Function()
@@ -5010,7 +5010,49 @@ end)
 
 
 
+AutoMisc3:Toggle("Tàn Hình Quái",false,function(value)
+    _G.inv = value
+    while _G.inv do wait()
+        pcall(function()
+for i,v in pairs(game:GetService("Workspace").Enemies:GetDescendants()) do
+	if v.ClassName == "MeshPart" then
+	v.Transparency = 1
+end
+end
+for i,v in pairs(game:GetService("Workspace").Enemies:GetDescendants()) do
+	if v.Name == "Head" then
+	v.Transparency = 1
+end
+end
+	for i,v in pairs(game:GetService("Workspace").Enemies:GetDescendants()) do
+		if v.ClassName == "Accessory" then
+			v.Handle.Transparency = 1
+		end
+	end
+	for i,v in pairs(game:GetService("Workspace").Enemies:GetDescendants()) do
+		if v.ClassName == "Decal" then
+		v.Transparency = 1
+		end
+end
+end)
+end
+end)
 
+AutoMisc3:Toggle("Remove Hiệu Ứng chết",true,function(value)
+     _G.Remove_EffectDeath = value
+    end)
+
+spawn(function()
+    game:GetService('RunService').Stepped:Connect(function()
+        if _G.Remove_EffectDeath  then
+            for i, v in pairs(game:GetService("ReplicatedStorage").Effect.Container:GetChildren()) do
+                if v.Name == "Death" then
+                    v:Destroy() 
+                end
+            end
+        end
+    end)
+end)
 
     Setting:Toggle("Ẩn Gui",false,function(value)
         if value == true then
@@ -5451,7 +5493,7 @@ end
 end)
 
 
-Setting:Toggle("Fast Attack",true,function(value)
+Setting:Toggle("Fast Attack",false,function(value)
  _G.FastAttack1 = value
  end)
 
