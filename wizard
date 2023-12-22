@@ -5,7 +5,7 @@
 
 
 
-
+setfpscap(120)
 
 
 
@@ -127,7 +127,7 @@ end)
 	
 	spawn(function()
 	while true do
-	if _G.FastAttack then
+	if _G.FastAttack1 then
 	pcall(function()
 	CameraShakerR:Stop()
 	CombatFramework.activeController.attacking = false
@@ -4995,14 +4995,125 @@ spawn(function()
 end)
 
 
-
-
-Setting:Toggle("Slow Attack",false,function(value)
- _G.FastAttack1 = value
+local AttackList = {"Slow", "Normal", "Pro"}
+_G.FastAttackDelay = "Normal"
+Setting:Dropdown("Attack Delay",AttackList,function(value)
+        _G.FastAttackDelay = value
+  end)
+Setting:Toggle("Slow Attack",true,function(value)
+ _G.FastAttack = value
  if value then
      Attack1Function()
      end
+end) 
+
+
+
+
+Setting:Toggle("Tàn Hình Quái",false,function(value)
+    _G.inv = value
+    while _G.inv do wait()
+        pcall(function()
+for i,v in pairs(game:GetService("Workspace").Enemies:GetDescendants()) do
+	if v.ClassName == "MeshPart" then
+	v.Transparency = 1
+end
+end
+for i,v in pairs(game:GetService("Workspace").Enemies:GetDescendants()) do
+	if v.Name == "Head" then
+	v.Transparency = 1
+end
+end
+	for i,v in pairs(game:GetService("Workspace").Enemies:GetDescendants()) do
+		if v.ClassName == "Accessory" then
+			v.Handle.Transparency = 1
+		end
+	end
+	for i,v in pairs(game:GetService("Workspace").Enemies:GetDescendants()) do
+		if v.ClassName == "Decal" then
+		v.Transparency = 1
+		end
+end
 end)
+end
+end)
+
+Setting:Toggle("Remove Hiệu Ứng chết",true,function(value)
+     _G.Remove_EffectDeath = value
+    end)
+
+spawn(function()
+    game:GetService('RunService').Stepped:Connect(function()
+        if _G.Remove_EffectDeath  then
+            for i, v in pairs(game:GetService("ReplicatedStorage").Effect.Container:GetChildren()) do
+                if v.Name == "Death" then
+                    v:Destroy() 
+                end
+            end
+        end
+    end)
+end)
+
+    Setting:Toggle("Ẩn Gui",false,function(value)
+        if value == true then
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Beli.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.HP.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Energy.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.StatsButton.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ShopButton.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Skills.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Level.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.MenuButton.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Code.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Settings.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Mute.Visible = false
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.CrewButton.Visible = false
+        else
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Beli.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.HP.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Energy.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.StatsButton.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ShopButton.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Skills.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Level.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.MenuButton.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Code.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Settings.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Mute.Visible = true
+            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.CrewButton.Visible = true
+        end
+    end)
+    
+    
+    
+    
+    
+    
+ Setting:Toggle("Fix lag nhẹ",nil,function(value)
+    _G.DeleteAttackFx = value
+    if _G.DeleteAttackFx == true then
+    while _G.DeleteAttackFx do wait()
+        for i, v in pairs(game.Workspace["_WorldOrigin"]:GetChildren()) do
+            if v.Name == "CurvedRing" or v.Name == "DamageCounter" or v.Name == "SwordSlash" or v.Name == "Damage" or v.Name == "Mon" or v.Name == "Sounds" then
+                v:Destroy() 
+            end
+        end
+    end
+    end
+end)
+    
+    spawn(function()
+      while wait() do
+      if _G.DeleteAttackFx then
+        for i, v in pairs(game.Workspace["_WorldOrigin"]:GetChildren()) do
+            if v.Name == "CurvedRing" or v.Name == "SlashHit" or v.Name == "DamageCounter" or v.Name == "SwordSlash" or v.Name == "SlashTail" or v.Name == "Sounds" then
+                v:Destroy() 
+            end
+        end
+    end
+    end
+end)    
+
 
 
 
@@ -5014,7 +5125,7 @@ xShadowx = debug.getupvalues(xShadowFastAttackx)[2]
 
 spawn(function()
     game:GetService("RunService").RenderStepped:Connect(function()
-        if _G.FastAttack then
+        if _G.FastAttack1 then
             if typeof(xShadowx) == "table" then
                 pcall(function()
                     xShadowx.activeController.timeToNextAttack = (math.huge^math.huge^math.huge)
@@ -5119,8 +5230,8 @@ end)
 
 ca:Toggle("Kill Cá ̉( Dễ Die )",_G.canho,function(value)
  _G.canho = value
- _G.FastAttack = value
  _G.FastAttack1 = value
+ _G.FastAttack = value
  _G.click = value
  StopTween(_G.canho)
  end)
@@ -5381,9 +5492,9 @@ end
 
 end)
 
-_G.FastAttack = true
-Setting:Toggle("Fast Attack",true,function(value)
- _G.FastAttack = value
+
+Setting:Toggle("Fast Attack",false,function(value)
+ _G.FastAttack1 = value
  end)
 
 
@@ -10330,7 +10441,7 @@ Race:Seperator("Buy + Bật Tộc")
    Race:Toggle("Kill Người Chơi ( 90% Win )",_G.killplayertrain,function(value)
  _G.killplayertrain = value
  _G.click = value
- _G.FastAttack = value
+ _G.FastAttack1 = value
  StopTween(_G.killplayertrain)
  end)
   
@@ -13725,7 +13836,6 @@ end)
 
 wait(4)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/hub5144/1/main/2'))()
-
 
 
 
